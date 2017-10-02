@@ -45,31 +45,42 @@ public:
         }
     }
     template <typename MyIterator>
-    static void heap_sort(vector<string>::iterator begin, vector<string>::iterator end)
+    static void heap_sort(MyIterator begin, MyIterator end)
     {
-        ;
+        buildHeap(begin,end);
+        for(auto i=end-1;i>begin;i--)
+        {
+            swap(*begin,*i);
+            maxHeapify(begin,i+1,1);
+        }
     }
 protected:
-    void maxHeapify(vector<string>::iterator begin, vector<string>::iterator end, int i)
+    template <typename MyIterator>
+    static void maxHeapify(MyIterator begin, MyIterator end, int i)
     {
         // It's assumed that the heap is sorted except for the layer containing element No.i .
         // Initially i = 1
-        vector<string>::iterator max = begin;
-        if(*(begin+TREE_LEFT(i))>*(begin+i-1) && begin+TREE_LEFT(i)<end)
+        MyIterator max = begin+i-1;
+        if(compare(*(begin+TREE_LEFT(i)),*(begin+i-1)) && begin+TREE_LEFT(i)<end)
             max = begin+TREE_LEFT(i);
-        if(*(begin+TREE_RIGHT(i))>*max && begin+TREE_RIGHT(i)<end)
+        if(compare(*(begin+TREE_RIGHT(i)),*max) && begin+TREE_RIGHT(i)<end)
             max = begin+TREE_RIGHT(i);
         if(max!= begin+i-1)
         {
             swap(*max,*(begin+i-1));
-            vector<string>::difference_type diff = max-begin;
+            auto diff = max-begin;
             // is this ok?
             maxHeapify(begin,end,(max-begin));
-            // try this
-            maxHeapify(begin,end,int(diff));
         }
     }
-    void buildHeap(vector<string> origin);
+    template<typename MyIterator>
+    static void buildHeap(MyIterator begin, MyIterator end)
+    {
+        auto n = end-begin;
+        auto bottom_root = begin+(n/2)-1;
+        for(auto j=bottom_root;j>=begin;j--)
+            maxHeapify(begin,end,bottom_root-begin+1);
+    }
 };
 
 
@@ -101,7 +112,7 @@ int main()
     vector<string> testvec=origin;
     for(auto i=testvec.begin();i<testvec.end();i++)
         cout << *i << endl;
-    SortTools::insert_sort(testvec.begin(),testvec.end());
+    SortTools::heap_sort(testvec.begin(),testvec.end());
     cout << "sorted:" << endl;
     for(auto i=testvec.begin();i<testvec.end();i++)
         cout << *i << endl;
