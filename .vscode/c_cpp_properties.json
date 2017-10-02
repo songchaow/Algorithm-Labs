@@ -1,0 +1,73 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "/usr/include",
+                "/usr/local/include",
+                "${workspaceRoot}"
+            ],
+            "defines": [],
+            "intelliSenseMode": "clang-x64",
+            "browse": {
+                "path": [
+                    "/usr/include",
+                    "/usr/local/include",
+                    "${workspaceRoot}"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            },
+            "macFrameworkPath": [
+                "/System/Library/Frameworks",
+                "/Library/Frameworks"
+            ]
+        },
+        {
+            "name": "Linux",
+            "includePath": [
+                "/usr/include",
+                "/usr/local/include",
+                "${workspaceRoot}"
+            ],
+            "defines": [],
+            "intelliSenseMode": "clang-x64",
+            "browse": {
+                "path": [
+                    "/usr/include",
+                    "/usr/local/include",
+                    "${workspaceRoot}"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            }
+        },
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceRoot}",
+                "D:\\Green App\\codeblocks-16.01mingw-nosetup\\MinGW\\include",
+                "D:\\Green App\\codeblocks-16.01mingw-nosetup\\MinGW\\lib\\gcc\\mingw32\\4.9.2\\include\\c++",
+                "D:\\Green App\\codeblocks-16.01mingw-nosetup\\MinGW\\lib\\gcc\\mingw32\\4.9.2\\include\\c++\\mingw32",
+                "D:\\Green App\\codeblocks-16.01mingw-nosetup\\MinGW\\lib\\gcc\\mingw32\\4.9.2\\include"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE"
+            ],
+            "intelliSenseMode": "msvc-x64",
+            "browse": {
+                "path": [
+                    "${workspaceRoot}",
+                    "D:\\Green App\\codeblocks-16.01mingw-nosetup\\MinGW\\include",
+                    "D:\\Green App\\codeblocks-16.01mingw-nosetup\\MinGW\\lib\\gcc\\mingw32\\4.9.2\\include\\c++",                
+                    "D:\\Green App\\codeblocks-16.01mingw-nosetup\\MinGW\\lib\\gcc\\mingw32\\4.9.2\\include\\c++\\mingw32",
+                    "D:\\Green App\\codeblocks-16.01mingw-nosetup\\MinGW\\lib\\gcc\\mingw32\\4.9.2\\include"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            }
+        }
+    ],
+    "version": 3
+}

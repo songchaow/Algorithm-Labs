@@ -38,7 +38,7 @@ public:
         {
             MyIterator min=begin;
             MyIterator j;
-            for(j=begin+1;j<=end;j++)
+            for(j=begin+1;j<end;j++)
                 //find min element in  ... end
                 if(compare(*min,*j)) min=j;
             if(min!=begin) swap(*min,*begin);
@@ -55,9 +55,9 @@ protected:
         // It's assumed that the heap is sorted except for the layer containing element No.i .
         // Initially i = 1
         vector<string>::iterator max = begin;
-        if(*(begin+TREE_LEFT(i))>*(begin+i-1) && begin+TREE_LEFT(i)<=end)
+        if(*(begin+TREE_LEFT(i))>*(begin+i-1) && begin+TREE_LEFT(i)<end)
             max = begin+TREE_LEFT(i);
-        if(*(begin+TREE_RIGHT(i))>*max && begin+TREE_RIGHT(i)<=end)
+        if(*(begin+TREE_RIGHT(i))>*max && begin+TREE_RIGHT(i)<end)
             max = begin+TREE_RIGHT(i);
         if(max!= begin+i-1)
         {
@@ -96,10 +96,15 @@ int main()
 {
     vector<string> origin;
     srand(time(0));
-    //--------------------------- test block
+    //--------------------------- test block 1
     generator(15,origin);
     vector<string> testvec=origin;
+    for(auto i=testvec.begin();i<testvec.end();i++)
+        cout << *i << endl;
     SortTools::insert_sort(testvec.begin(),testvec.end());
-    //--------------------------- test block
+    cout << "sorted:" << endl;
+    for(auto i=testvec.begin();i<testvec.end();i++)
+        cout << *i << endl;
+    //--------------------------- test block 1
     origin;
 }
