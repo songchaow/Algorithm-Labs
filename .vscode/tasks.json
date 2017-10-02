@@ -12,6 +12,16 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "taskName": "linux build",
+            "type": "shell",
+            "command": "g++ ${file} -std=c++11 -ggdb -o Lab1/a.out",
+            "problemMatcher": "$gcc",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }

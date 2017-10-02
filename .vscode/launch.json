@@ -1,18 +1,27 @@
 {
         "version": "0.2.0",
         "configurations": [
+            { 
+                "name": "(gdb) Attach",
+                "type": "cppdbg",
+                "request": "attach",
+                "program": "${workspaceRoot}/Lab1/a.out",
+                "processId": "${command:pickProcess}",
+                "MIMode": "gdb",
+                "miDebuggerPath": "/usr/bin/gdb"
+            },
             {
                 "name": "(gdb) Linux Launch",
                 "type": "cppdbg",
                 "request": "launch",
-                "program": "enter program name, for example ${workspaceRoot}/a.exe",
+                "program": "${workspaceRoot}/Lab1/a.out",
                 "args": [],
-                "stopAtEntry": false,
+                "stopAtEntry": true,
                 "cwd": "${workspaceRoot}",
                 "environment": [],
                 "externalConsole": true,
                 "MIMode": "gdb",
-                "miDebuggerPath": "/path/to/gdb",
+                "miDebuggerPath": "gdb",
                 "setupCommands": [
                     {
                         "description": "Enable pretty-printing for gdb",
