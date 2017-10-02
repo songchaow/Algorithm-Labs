@@ -59,18 +59,18 @@ protected:
     static void maxHeapify(MyIterator begin, MyIterator end, int i)
     {
         // It's assumed that the heap is sorted except for the layer containing element No.i .
-        // Initially i = 1
+        // Initially i = 1, indicating the index of largest element
         MyIterator max = begin+i-1;
-        if(compare(*(begin+TREE_LEFT(i)),*(begin+i-1)) && begin+TREE_LEFT(i)<end)
-            max = begin+TREE_LEFT(i);
-        if(compare(*(begin+TREE_RIGHT(i)),*max) && begin+TREE_RIGHT(i)<end)
-            max = begin+TREE_RIGHT(i);
+        if(compare(*(begin+TREE_LEFT(i)-1),*(begin+i-1)) && begin+TREE_LEFT(i)-1<end)
+            max = begin+TREE_LEFT(i)-1;
+        if(compare(*(begin+TREE_RIGHT(i)-1),*max) && begin+TREE_RIGHT(i)-1<end)
+            max = begin+TREE_RIGHT(i)-1;
         if(max!= begin+i-1)
         {
             swap(*max,*(begin+i-1));
             auto diff = max-begin;
             // is this ok?
-            maxHeapify(begin,end,(max-begin));
+            maxHeapify(begin,end,(max-begin+1));
         }
     }
     template<typename MyIterator>
