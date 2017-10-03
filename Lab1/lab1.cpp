@@ -5,13 +5,16 @@
 #include <string>
 #include <array>
 #include <algorithm>
+#include <map>
 using namespace std;
 
 #define TREE_PARENT(i) (i/2)
 #define TREE_LEFT(i) (2*i)
 #define TREE_RIGHT(i) (2*i+1)
 #define INT_RANGE 65535
+#define DIGIT_NUM 5
 
+static map<int,int> placeholder;
 class SortTools
 {
     //the large elements are on the left side when sorted.
@@ -56,7 +59,7 @@ public:
         }
     }
     template <class MyIterator, class myvector>
-    static void merge_sort(MyIterator begin, MyIterator end)
+    static void merge_sort(MyIterator begin, MyIterator end, map<int,int> &info=placeholder)
     // top-down approach
     {
         if(end-begin>=2)
@@ -65,7 +68,10 @@ public:
             auto mid = begin+diff/2;
             merge_sort<MyIterator,myvector>(begin,mid); //the element pointed by mid is in Part two.
             merge_sort<MyIterator,myvector>(mid,end);
-            merge<MyIterator,myvector>(begin,mid,end);
+            if(info.size()>=1)
+            merge<MyIterator,myvector>(begin,mid,end,info);
+            else
+            merge<MyIterator,myvector>(begin,mid,end);            
         }
     }
     template <typename MyIterator>
@@ -103,14 +109,38 @@ public:
         // fill the sorted data back
         for(auto i=begin;i<end;i++)
         {
-            output[data_pool[*i]-1] = *i;
+            output[data_pool[*i]-1] = *i
             data_pool[*i]--;
         }
         auto i=begin,j=output.begin();
         for(;i<end;)
             *i++=*j++;
     }
+    static void radix_sort(vector<int>::iterator begin, vector<int>::iterator end)
+    {
+        for(auto i=1;i<=DIGIT_NUM;i++)
+        {
+            //make a map between real values and the current digit(based on 10)
+            map<int,int> info;
+            info.clear();
+            for(auto j=begin;j<end;j++)
+                info.insert(pair(*j,find_digit(*j)));
+            //sort according to the digit
+            merge_sort(begin,end,info);
+        }
+
+    }
 protected:
+    static int find_digit(int num, int index)
+    {
+        // eg: num=`6554` index=`1`, and we get `4`
+        for(auto i=1;i<=num;i++)
+        {
+            auto left = num%10;
+            num = (num-left)/10;
+        }
+        return left;
+    }
     template <typename MyIterator>
     static MyIterator partition(MyIterator begin, MyIterator end)
     {
@@ -127,7 +157,7 @@ protected:
         return (i+1);
     }
     template <class MyIterator, class myvector>
-    static void merge(MyIterator begin, MyIterator mid, MyIterator end)
+    static void merge(MyIterator begin, MyIterator mid, MyIterator end, map<int,int> &info=placeholder)
     {
         // Array A and B have been sorted so that large elements are on right side.
         myvector A,B;
@@ -138,15 +168,32 @@ protected:
         auto a=A.begin(),b=B.begin();
         while(a!=A.end() && b!=B.end())
         {
+            if(info.size()>=1)
+            {
+                if(compare(info[*a],info[*b]))
+                {
+                    *begin++=*b;
+                    b++;
+                }
+                else
+                {
+                    *begin++=*a;
+                    a++;
+                }
+            }
+
+            else
+            {
             if(compare(*a,*b))
             {
                 *begin++=*b;
                 b++;
             }
-            else if(compare(*b,*a))
+            else
             {
                 *begin++=*a;
                 a++;
+            }
             }
         }
         if(a!=A.end())
