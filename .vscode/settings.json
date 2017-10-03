@@ -5,6 +5,8 @@
         "cstdlib": "cpp",
         "initializer_list": "cpp",
         "*.tcc": "cpp",
-        "limits": "cpp"
+        "limits": "cpp",
+        "iostream": "cpp",
+        "ostream": "cpp"
     }
 }
