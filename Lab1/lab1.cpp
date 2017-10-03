@@ -67,7 +67,42 @@ public:
             merge<MyIterator,myvector>(begin,mid,end);
         }
     }
+    template <typename MyIterator>
+    static void bubble_sort(MyIterator begin, MyIterator end)
+    {
+	for(auto i=begin;i<end-1;i++)
+ 	    {
+            for(auto j=begin;j<end-1-(i-begin);j++)
+            {
+                if(compare(*j,*(j+1))) swap(*j,*(j+1));
+            }
+	    }
+	    
+    }
+    template <typename MyIterator>
+    static void quick_sort(MyIterator begin, MyIterator end)
+    {
+        if(end-begin<2) return;
+        auto mid = partition(begin,end);
+        quick_sort(begin,mid);
+        quick_sort(mid,end);
+    }
 protected:
+    template <typename MyIterator>
+    static MyIterator partition(MyIterator begin, MyIterator end)
+    {
+        auto pivot = *(end-1);
+        auto i=begin-1,j=begin;
+        for(j=begin;j<end-1;j++)
+        {
+            if(compare(pivot,*j)) // j<pivot
+            {
+                swap(*++i,*j);
+            }
+        }
+        swap(*(i+1),*(end-1));
+        return (i+1);
+    }
     template <class MyIterator, class myvector>
     static void merge(MyIterator begin, MyIterator mid, MyIterator end)
     {
@@ -160,6 +195,8 @@ int main()
     vector<string> testvec=origin;
     for(auto i=testvec.begin();i<testvec.end();i++)
         cout << *i << endl;
+    SortTools::quick_sort(testvec.begin(),testvec.end());
+    SortTools::bubble_sort(testvec.begin(),testvec.end());
     SortTools::merge_sort<vector<string>::iterator,vector<string>>(testvec.begin(),testvec.end());
     SortTools::heap_sort(testvec.begin(),testvec.end());
     cout << "sorted:" << endl;
