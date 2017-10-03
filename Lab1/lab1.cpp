@@ -85,15 +85,15 @@ protected:
                 *begin++=*b;
                 b++;
             }
-            if(compare(*b,*a))
+            else if(compare(*b,*a))
             {
-                *begin++=*b;
+                *begin++=*a;
                 a++;
             }
         }
         if(a!=A.end())
             while(a!=A.end()) *begin++=(*a++);
-        else while(b!=A.end()) *begin++=(*b++);
+        else while(b!=B.end()) *begin++=(*b++);
         
 
     }
