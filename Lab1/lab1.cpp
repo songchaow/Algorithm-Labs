@@ -10,6 +10,7 @@ using namespace std;
 #define TREE_PARENT(i) (i/2)
 #define TREE_LEFT(i) (2*i)
 #define TREE_RIGHT(i) (2*i+1)
+#define INT_RANGE 65535
 
 class SortTools
 {
@@ -86,6 +87,28 @@ public:
         auto mid = partition(begin,end);
         quick_sort(begin,mid);
         quick_sort(mid,end);
+    }
+    static void counting_sort(vector<int>::iterator begin, vector<int>::iterator end)
+    {
+        // This member functin applies only to `integer` elements.
+        array<int,INT_RANGE> data_pool;
+        vector<int> output;
+        output.resize(end-begin+1);
+        for(auto i=data_pool.begin();i<data_pool.end();i++)
+            *i = 0;
+        for(auto i=begin;i<end;i++)
+            data_pool.at(*i)++; // data_pool now stores the number of each value occurs
+        for(auto i=data_pool.begin()+1;i<data_pool.end();i++)
+            *i=*i+*(i-1);
+        // fill the sorted data back
+        for(auto i=begin;i<end;i++)
+        {
+            output[data_pool[*i]-1] = *i;
+            data_pool[*i]--;
+        }
+        auto i=begin,j=output.begin();
+        for(;i<end;)
+            *i++=*j++;
     }
 protected:
     template <typename MyIterator>
@@ -189,12 +212,15 @@ int generator(int n,vector<int> &origin)
 int main()
 {
     vector<string> origin;
+    vector<int> origin_num;
     srand(time(0));
     //--------------------------- test block 1
     generator(15,origin);
+    generator(15,origin_num);
     vector<string> testvec=origin;
     for(auto i=testvec.begin();i<testvec.end();i++)
         cout << *i << endl;
+    SortTools::counting_sort(origin_num.begin(),origin_num.end());
     SortTools::quick_sort(testvec.begin(),testvec.end());
     SortTools::bubble_sort(testvec.begin(),testvec.end());
     SortTools::merge_sort<vector<string>::iterator,vector<string>>(testvec.begin(),testvec.end());
