@@ -23,14 +23,14 @@ public:
         else if(a.length()<b.length())
             return false;
         else
-            return ~a.compare(b);
+            return a.compare(b)>0;
     }
     static bool compare(int a, int b)
     {
         if(a>b) return true;
         else return false;
     }
-    //whether to compare via lengths and characters, or directly via magnitude, need to be implemented later.
+    //whether to compare via both lengths and characters, or directly via magnitude, need to be implemented later.
     template <typename MyIterator>
     static void insert_sort(MyIterator begin,MyIterator end)
     {
@@ -51,10 +51,52 @@ public:
         for(auto i=end-1;i>begin;i--)
         {
             swap(*begin,*i);
-            maxHeapify(begin,i+1,1);
+            maxHeapify(begin,i,1);
+        }
+    }
+    template <class MyIterator, class myvector>
+    static void merge_sort(MyIterator begin, MyIterator end)
+    // top-down approach
+    {
+        if(end-begin>=2)
+        {
+            auto diff=end-begin;
+            auto mid = begin+diff/2;
+            merge_sort<MyIterator,myvector>(begin,mid); //the element pointed by mid is in Part two.
+            merge_sort<MyIterator,myvector>(mid,end);
+            merge<MyIterator,myvector>(begin,mid,end);
         }
     }
 protected:
+    template <class MyIterator, class myvector>
+    static void merge(MyIterator begin, MyIterator mid, MyIterator end)
+    {
+        // Array A and B have been sorted so that large elements are on right side.
+        myvector A,B;
+        for(auto i=begin;i<mid;i++)
+            A.push_back(*i);
+        for(auto i=mid;i<end;i++)
+            B.push_back(*i);
+        auto a=A.begin(),b=B.begin();
+        while(a!=A.end() && b!=B.end())
+        {
+            if(compare(*a,*b))
+            {
+                *begin++=*b;
+                b++;
+            }
+            if(compare(*b,*a))
+            {
+                *begin++=*b;
+                a++;
+            }
+        }
+        if(a!=A.end())
+            while(a!=A.end()) *begin++=(*a++);
+        else while(b!=A.end()) *begin++=(*b++);
+        
+
+    }
     template <typename MyIterator>
     static void maxHeapify(MyIterator begin, MyIterator end, int i)
     {
@@ -79,7 +121,7 @@ protected:
         auto n = end-begin;
         auto bottom_root = begin+(n/2)-1;
         for(auto j=bottom_root;j>=begin;j--)
-            maxHeapify(begin,end,bottom_root-begin+1);
+            maxHeapify(begin,end,j-begin+1);
     }
 };
 
@@ -99,9 +141,15 @@ int generator(int n,vector<string> &origin)
 }
 int generator(int n,vector<int> &origin)
 {
-    ;
+    for(int i=1;i<=n;i++)
+    {
+        int item = rand()%65535+1;
+        origin.push_back(item);
+    }
 }
 
+//template  void SortTools::merge_sort<vector<string>::iterator,vector<string>>(vector<string>::iterator,vector<string>::iterator);
+//template  void SortTools::merge<vector<string>::iterator, vector<string>>(vector<string>::iterator,vector<string>::iterator,vector<string>::iterator);
 
 int main()
 {
@@ -112,6 +160,7 @@ int main()
     vector<string> testvec=origin;
     for(auto i=testvec.begin();i<testvec.end();i++)
         cout << *i << endl;
+    SortTools::merge_sort<vector<string>::iterator,vector<string>>(testvec.begin(),testvec.end());
     SortTools::heap_sort(testvec.begin(),testvec.end());
     cout << "sorted:" << endl;
     for(auto i=testvec.begin();i<testvec.end();i++)
