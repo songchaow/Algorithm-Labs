@@ -68,11 +68,20 @@ public:
             auto mid = begin+diff/2;
             merge_sort<MyIterator,myvector>(begin,mid); //the element pointed by mid is in Part two.
             merge_sort<MyIterator,myvector>(mid,end);
-            if(info.size()>=1)
-            merge<MyIterator,myvector>(begin,mid,end,info);
-            else
             merge<MyIterator,myvector>(begin,mid,end);            
         }
+    }
+    static void merge_sort_info(vector<int>::iterator begin, vector<int>::iterator end, map<int,int> &info)
+    {
+        if(end-begin>=2)
+        {
+            auto diff=end-begin;
+            auto mid = begin+diff/2;
+            merge_sort_info(begin,mid,info); //the element pointed by mid is in Part two.
+            merge_sort_info(mid,end,info);           
+            merge_info(begin,mid,end,info);
+        }
+           
     }
     template <typename MyIterator>
     static void bubble_sort(MyIterator begin, MyIterator end)
@@ -109,7 +118,7 @@ public:
         // fill the sorted data back
         for(auto i=begin;i<end;i++)
         {
-            output[data_pool[*i]-1] = *i
+            output[data_pool[*i]-1] = *i;
             data_pool[*i]--;
         }
         auto i=begin,j=output.begin();
@@ -124,9 +133,9 @@ public:
             map<int,int> info;
             info.clear();
             for(auto j=begin;j<end;j++)
-                info.insert(pair(*j,find_digit(*j)));
+                info.insert(pair<int,int>(*j,find_digit(*j,i)));
             //sort according to the digit
-            merge_sort(begin,end,info);
+            merge_sort_info(begin,end,info);
         }
 
     }
@@ -134,12 +143,13 @@ protected:
     static int find_digit(int num, int index)
     {
         // eg: num=`6554` index=`1`, and we get `4`
+        int leave;
         for(auto i=1;i<=num;i++)
         {
-            auto left = num%10;
-            num = (num-left)/10;
+            leave = num%10;
+            num = (num-leave)/10;
         }
-        return left;
+        return leave;
     }
     template <typename MyIterator>
     static MyIterator partition(MyIterator begin, MyIterator end)
@@ -156,6 +166,28 @@ protected:
         swap(*(i+1),*(end-1));
         return (i+1);
     }
+    static void merge_info(vector<int>::iterator begin, vector<int>::iterator mid, vector<int>::iterator end, map<int,int> &info=placeholder)
+    {
+        vector<int> A,B;
+        for(auto i=begin;i<mid;i++)
+            A.push_back(*i);
+        for(auto i=mid;i<end;i++)
+            B.push_back(*i);
+        auto a=A.begin(),b=B.begin();
+        while(a!=A.end() && b!=B.end())
+        {
+            if(compare(info[*a],info[*b]))
+            {
+                *begin++=*b;
+                b++;
+            }
+            else
+            {
+                *begin++=*a;
+                a++;
+            }
+        }
+    }
     template <class MyIterator, class myvector>
     static void merge(MyIterator begin, MyIterator mid, MyIterator end, map<int,int> &info=placeholder)
     {
@@ -168,22 +200,7 @@ protected:
         auto a=A.begin(),b=B.begin();
         while(a!=A.end() && b!=B.end())
         {
-            if(info.size()>=1)
-            {
-                if(compare(info[*a],info[*b]))
-                {
-                    *begin++=*b;
-                    b++;
-                }
-                else
-                {
-                    *begin++=*a;
-                    a++;
-                }
-            }
 
-            else
-            {
             if(compare(*a,*b))
             {
                 *begin++=*b;
@@ -193,7 +210,6 @@ protected:
             {
                 *begin++=*a;
                 a++;
-            }
             }
         }
         if(a!=A.end())
@@ -267,6 +283,7 @@ int main()
     vector<string> testvec=origin;
     for(auto i=testvec.begin();i<testvec.end();i++)
         cout << *i << endl;
+    SortTools::radix_sort(origin_num.begin(),origin_num.end());
     SortTools::counting_sort(origin_num.begin(),origin_num.end());
     SortTools::quick_sort(testvec.begin(),testvec.end());
     SortTools::bubble_sort(testvec.begin(),testvec.end());
