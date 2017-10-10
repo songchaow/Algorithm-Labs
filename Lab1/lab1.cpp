@@ -6,6 +6,9 @@
 #include <array>
 #include <algorithm>
 #include <map>
+#include <chrono>
+#include <fstream>
+#include <utility>
 using namespace std;
 
 #define TREE_PARENT(i) (i/2)
@@ -101,7 +104,7 @@ public:
         if(end-begin<2) return;
         auto mid = partition(begin,end);
         quick_sort(begin,mid);
-        quick_sort(mid,end);
+        quick_sort(mid+1,end);
     }
     static void counting_sort(vector<int>::iterator begin, vector<int>::iterator end)
     {
@@ -112,7 +115,7 @@ public:
         for(auto i=data_pool.begin();i<data_pool.end();i++)
             *i = 0;
         for(auto i=begin;i<end;i++)
-            data_pool.at(*i)++; // data_pool now stores the number of each value occurs
+            data_pool.at(*i-1)++; // data_pool now stores the number of each value occurs
         for(auto i=data_pool.begin()+1;i<data_pool.end();i++)
             *i=*i+*(i-1);
         // fill the sorted data back
@@ -144,7 +147,7 @@ protected:
     {
         // eg: num=`6554` index=`1`, and we get `4`
         int leave;
-        for(auto i=1;i<=num;i++)
+        for(auto i=1;i<=index;i++)
         {
             leave = num%10;
             num = (num-leave)/10;
@@ -187,6 +190,9 @@ protected:
                 a++;
             }
         }
+        if(a!=A.end())
+        while(a!=A.end()) *begin++=(*a++);
+        else while(b!=B.end()) *begin++=(*b++);
     }
     template <class MyIterator, class myvector>
     static void merge(MyIterator begin, MyIterator mid, MyIterator end, map<int,int> &info=placeholder)
@@ -224,9 +230,11 @@ protected:
         // It's assumed that the heap is sorted except for the layer containing element No.i .
         // Initially i = 1, indicating the index of largest element
         MyIterator max = begin+i-1;
-        if(compare(*(begin+TREE_LEFT(i)-1),*(begin+i-1)) && begin+TREE_LEFT(i)-1<end)
+        if(begin+TREE_LEFT(i)-1<end)
+        if(compare(*(begin+TREE_LEFT(i)-1),*(begin+i-1)) )
             max = begin+TREE_LEFT(i)-1;
-        if(compare(*(begin+TREE_RIGHT(i)-1),*max) && begin+TREE_RIGHT(i)-1<end)
+        if(begin+TREE_RIGHT(i)-1<end)
+        if(compare(*(begin+TREE_RIGHT(i)-1),*max) )
             max = begin+TREE_RIGHT(i)-1;
         if(max!= begin+i-1)
         {
@@ -271,24 +279,195 @@ int generator(int n,vector<int> &origin)
 
 //template  void SortTools::merge_sort<vector<string>::iterator,vector<string>>(vector<string>::iterator,vector<string>::iterator);
 //template  void SortTools::merge<vector<string>::iterator, vector<string>>(vector<string>::iterator,vector<string>::iterator,vector<string>::iterator);
+class TestCase
+{
+public:
+    TestCase()
+    {
+        srand(time(0));
+    }
+    int SCALE_LIST[6] = {4,32,256,2048,16384,131072}; 
+    void report()
+    {
+        // print the execution time
+        ;
+    }
+    template<typename MyIterator>
+    void output(MyIterator begin, MyIterator end)
+    {
+        // outputs the origin unsorted data and sorted data
+        ;
+    }
+    template<typename myvector>
+    void run_lab1(int scale, myvector &unsorted)
+    {
+        // executes the four algorithms
+        auto sample = unsorted;
+        // measure execution time of insert-sort
+        cout << "-----Quick Sort-----" << "scale: " << scale << ' ';
+        auto start = std::chrono::high_resolution_clock::now();
+        SortTools::quick_sort(sample.begin(),sample.end());
+        auto end = std::chrono::high_resolution_clock::now();
+        auto diff=(end-start);
+        cout << "Execution time: " << diff.count()<<endl;
+
+        // measure execution time of heap-sort
+        sample = unsorted;
+        cout << "-----Heap Sort-----" << "scale: " << scale << ' ';
+        start = std::chrono::high_resolution_clock::now();
+        SortTools::heap_sort(sample.begin(),sample.end());
+        end = std::chrono::high_resolution_clock::now();
+        diff=(end-start);
+        cout << "Execution time: " << diff.count()<<endl;
+        
+        // measure execution time of merge-sort
+        sample = unsorted;
+        cout << "-----Merge Sort-----" << "scale: " << scale << ' ';
+        start = std::chrono::high_resolution_clock::now();
+        SortTools::merge_sort<typename myvector::iterator, myvector>(sample.begin(),sample.end());
+        end = std::chrono::high_resolution_clock::now();
+        diff=(end-start);
+        cout << "Execution time: " << diff.count()<<endl;
+
+        // measure execution time of quick-sort
+        sample = unsorted;
+        cout << "-----Insert Sort-----" << "scale: " << scale << ' ';
+        start = std::chrono::high_resolution_clock::now();
+        SortTools::insert_sort(sample.begin(),sample.end());
+        end = std::chrono::high_resolution_clock::now();
+        diff=(end-start);
+        cout << "Execution time: " << diff.count()<<endl;
+
+    }
+
+    template<typename myvector>
+    void run_lab2(int scale, myvector &unsorted)
+    {
+        auto sample = unsorted;
+        // executes the four algorithms
+        // measure execution time of insert-sort
+        cout << "-----Bubble Sort-----" << "scale: " << scale << ' ';
+        auto start = std::chrono::high_resolution_clock::now();
+        SortTools::bubble_sort(unsorted.begin(),unsorted.end());
+        auto end = std::chrono::high_resolution_clock::now();
+        auto diff=(end-start);
+        cout << "Execution time: " << diff.count()<<endl;
+
+        // measure execution time of quick-sort
+        sample = unsorted;
+        cout << "-----Insert Sort-----" << "scale: " << scale << ' ';
+        start = std::chrono::high_resolution_clock::now();
+        SortTools::insert_sort(sample.begin(),sample.end());
+        end = std::chrono::high_resolution_clock::now();
+        diff=(end-start);
+        cout << "Execution time: " << diff.count()<<endl;
+
+        // measure execution time of radix-sort
+        sample = unsorted;
+        cout << "-----Radix Sort-----" << "scale: " << scale << ' ';
+        start = std::chrono::high_resolution_clock::now();
+        SortTools::radix_sort(sample.begin(),sample.end());
+        end = std::chrono::high_resolution_clock::now();
+        diff=(end-start);
+        cout << "Execution time: " << diff.count()<<endl;
+
+        // measure execution time of counting-sort
+        sample = unsorted;
+        cout << "-----Counting Sort-----" << "scale: " << scale << ' ';
+        start = std::chrono::high_resolution_clock::now();
+        SortTools::counting_sort(sample.begin(),sample.end());
+        end = std::chrono::high_resolution_clock::now();
+        diff=(end-start);
+        cout << "Execution time: " << diff.count()<<endl;
+    }
+
+    void run_wrapper_int()
+    {
+        // deals with IO and executes `run`
+        // for `int` type
+        ifstream fstr("data_number.txt");
+        if(!fstr.is_open())
+            {cout << "Can not import data from data_number.txt" << endl;return;}
+        vector<int> unsorted;
+        int a;
+        for(auto i=SCALE_LIST;i<SCALE_LIST+6;i++)
+        {
+            unsorted.clear();
+            fstr.seekg(0);
+            for(auto n=1;n<=*i;n++)
+            {
+                fstr >> a;
+                unsorted.push_back(a);
+            }
+            run_lab2(*i,unsorted);
+
+        }
+    }
+    void run_wrapper_string()
+    {
+        // deals with IO and executes `run`
+        // for `string` type
+        ifstream fstr("data_string.txt");
+        if(!fstr.is_open())
+            {cout << "Can not import data from data_string.txt" << endl;return;}
+        vector<string> unsorted;
+        string a;
+        for(auto i=SCALE_LIST;i<SCALE_LIST+6;i++)
+        {
+            unsorted.clear();
+            fstr.seekg(0);
+            for(auto n=1;n<=*i;n++)
+            {
+                fstr >> a;
+                unsorted.push_back(a);
+            }
+            run_lab1(*i,unsorted);
+        }
+    }
+private:
+
+};
 
 int main()
 {
+    TestCase test;
+    test.run_wrapper_string();
+}
+
+int OldTest()
+{
     vector<string> origin;
     vector<int> origin_num;
+    ofstream f("data_string.txt",std::ios::out);
+    ofstream g("data_number.txt",std::ios::out);
     srand(time(0));
     //--------------------------- test block 1
-    generator(15,origin);
-    generator(15,origin_num);
+    generator(200000,origin);
+    generator(200000,origin_num);
+    for(auto i=origin.begin();i<origin.end();i++)
+    {
+        f << *i << endl;
+    }
+    f.close();
+    for(auto i=origin_num.begin();i<origin_num.end();i++)
+    {
+        g << *i << endl;
+    }
+    g.close();
+
+
     vector<string> testvec=origin;
-    for(auto i=testvec.begin();i<testvec.end();i++)
-        cout << *i << endl;
+    // for(auto i=testvec.begin();i<testvec.end();i++)
+    //     cout << *i << endl;
     SortTools::radix_sort(origin_num.begin(),origin_num.end());
     SortTools::counting_sort(origin_num.begin(),origin_num.end());
     SortTools::quick_sort(testvec.begin(),testvec.end());
-    SortTools::bubble_sort(testvec.begin(),testvec.end());
+    testvec = origin;
     SortTools::merge_sort<vector<string>::iterator,vector<string>>(testvec.begin(),testvec.end());
+    testvec = origin;
     SortTools::heap_sort(testvec.begin(),testvec.end());
+    testvec = origin;
+    SortTools::bubble_sort(testvec.begin(),testvec.end());
     cout << "sorted:" << endl;
     for(auto i=testvec.begin();i<testvec.end();i++)
         cout << *i << endl;
