@@ -124,8 +124,8 @@ public:
         // fill the sorted data back
         for(auto i=begin;i<end;i++)
         {
-            output[data_pool[*i]-1] = *i;
-            data_pool[*i]--;
+            output[data_pool[*i-1]-1] = *i;
+            data_pool[*i-1]--;
         }
         auto i=begin,j=output.begin();
         for(;i<end;)
@@ -289,18 +289,9 @@ public:
     {
         srand(time(0));
     }
-    int SCALE_LIST[6] = {4,32,256,2048,16384,131072}; 
-    void report()
-    {
-        // print the execution time
-        ;
-    }
-    template<typename MyIterator>
-    void output(MyIterator begin, MyIterator end)
-    {
-        // outputs the origin unsorted data and sorted data
-        ;
-    }
+    int SCALE_LIST[29] = {4,32,256,2048,3100,4200,5600,6700,7800,8900,10000,13000
+        ,16384,17000,18000,19000,21000,22000,23000,24000,25000,26000,27000,28000,29000,30000,40000,80000,131072}; 
+
     template<typename myvector>
     void run_lab1(int scale, myvector &unsorted, myvector &sample)
     {
@@ -312,7 +303,8 @@ public:
         SortTools::quick_sort(sample.begin(),sample.end());
         auto end = std::chrono::high_resolution_clock::now();
         auto diff=(end-start);
-        cout << "Execution time: " << diff.count()<<endl;
+        auto period = chrono::high_resolution_clock::period::den;
+        cout << "Execution time: " << diff.count() << endl;;
 
         // measure execution time of heap-sort
         sample = unsorted;
@@ -394,7 +386,7 @@ public:
         vector<int> unsorted;
         vector<int> sorted;
         int a;
-        for(auto i=SCALE_LIST;i<SCALE_LIST+6;i++)
+        for(auto i=SCALE_LIST;i<SCALE_LIST+29;i++)
         {
             unsorted.clear();
             fstr.seekg(0);
@@ -425,7 +417,7 @@ public:
         vector<string> unsorted;
         vector<string> sorted;
         string a;
-        for(auto i=SCALE_LIST;i<SCALE_LIST+6;i++)
+        for(auto i=SCALE_LIST;i<SCALE_LIST+29;i++)
         {
             unsorted.clear();
             fstr.seekg(0);
