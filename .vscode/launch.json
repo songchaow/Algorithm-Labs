@@ -1,11 +1,28 @@
 {
         "version": "0.2.0",
         "configurations": [
+            
+        {
+            "name": "Python",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": true,
+            "pythonPath": "${config:python.pythonPath}",
+            "program": "${file}",
+            "cwd": "${workspaceRoot}",
+            "env": {},
+            "envFile": "${workspaceRoot}/.env",
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput"
+            ]
+        },
             { 
                 "name": "(gdb) Attach",
                 "type": "cppdbg",
                 "request": "attach",
-                "program": "${workspaceRoot}/Lab1/a.out",
+                "program": "${workspaceRoot}/Lab1/ex2/source/a.exe",
                 "processId": "${command:pickProcess}",
                 "MIMode": "gdb",
                 "miDebuggerPath": "/usr/bin/gdb"
@@ -17,7 +34,7 @@
                 "program": "${workspaceRoot}/Lab1/ex1/source/a.out",
                 "args": [],
                 "stopAtEntry": true,
-                "cwd": "${workspaceRoot}",
+                "cwd": "${workspaceRoot}/Lab1/ex1/source/",
                 "environment": [],
                 "externalConsole": true,
                 "MIMode": "gdb",
@@ -34,10 +51,10 @@
                 "name": "(gdb) Launch",
                 "type": "cppdbg",
                 "request": "launch",
-                "program": "${workspaceRoot}/Lab1/ex1/source/a.exe",
+                "program": "${workspaceRoot}/Lab1/ex2/source/a.exe",
                 "args": [],
                 "stopAtEntry": true,
-                "cwd": "${workspaceRoot}",
+                "cwd": "${workspaceRoot}/Lab1/ex2/source/",
                 "environment": [],
                 "externalConsole": true,
                 "MIMode": "gdb",
