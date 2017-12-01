@@ -4,6 +4,8 @@
 #include <vector>
 #include <utility>
 #include <iostream>
+#include <fstream>
+#include <chrono>
 template<typename ElementT>
 class AbstractMatrix
 {
@@ -49,33 +51,33 @@ std::vector<unsigned int> getRandomList(int n)
     return random_list;
 }
 
-int run(int n,std::vector<unsigned int> &random_list,int** &m, int** &s)
+int run(int n,std::vector<unsigned int> &random_list,unsigned long long** &m, int** &s)
 {
     // initialize n matrixs
     std::vector<AbstractMatrix<int>> matrix_array;
     for(int i=0;i<n;i++)
         matrix_array.push_back(AbstractMatrix<int>(random_list[i],random_list[i+1]));
-    m = new int*[n]; // stores the minimal multiplication times
+    m = new unsigned long long*[n]; // stores the minimal multiplication times
     s = new int*[n]; // stores dividing positions
     for(int i=0;i<n;i++)
     {
-        m[i] = new int[n];
+        m[i] = new unsigned long long[n];
         s[i] = new int[n];
     }
     int l,i,j,k;
     for(int i=0;i<n;i++)
-        m[i][i] = -1; // -1 stands for infinity
-    for(l=2;l<n;l++) // l: the length of current group
+        m[i][i] = 0; 
+    for(l=2;l<=n;l++) // l: the length of current group
     {
         for(i=0;i<=n-l;i++)
         {
             j = i+l-1;
-            m[i][j] = -1;
+            m[i][j] = -1; // -1 stands for infinity
             for(k=i;k<=j-1;k++)
             {
-                int currTimes = matrix_array[i].getHeight()*matrix_array[k].getLength()*matrix_array[j].getLength()
+                unsigned long long currTimes = matrix_array[i].getHeight()*matrix_array[k].getLength()*matrix_array[j].getLength()
                                 +m[i][k]+m[k+1][j];
-                if(currTimes<m[i][j] && m[i][j]!=-1)
+                if(currTimes<m[i][j] || m[i][j]==-1)
                     {m[i][j] = currTimes;s[i][j]=k;}
             }
         }
@@ -93,17 +95,24 @@ void printMatrix(std::vector<unsigned int> &random_list)
         std::cout<<"Height: "<<random_list[i]<<" Length: "<<random_list[i+1]<<std::endl;
 }
 
-void printOptimalSequnce(int n, int** &m, int** &s, int i, int j)
+void printOptimalSequnce(int n, unsigned long long** &m, int** &s, int i, int j)
 {
     if(i!=j)
     {
         int k = s[i][j];
         printOptimalSequnce(n,m,s,i,k);
-        printOptimalSequnce(n,m,s,k+i,j);
+        printOptimalSequnce(n,m,s,k+1,j);
+        std::cout<<"Multiply matrix ";
         if(k==i)
-        std::cout<< "Multiply matrix" << i << " and matrix" << j << std::endl;
+            std::cout<<i;
         else
-        std::cout<< "Multiply matrix from" << i << " to" << k << " and from "<<k+1<<" to" <<j<<std::endl;
+            std::cout<<"group "<<i<<" to "<<k;
+        std::cout<<" and matrix ";
+        if(k+1==j)
+            std::cout<<j;
+        else
+            std::cout<<"group "<<k+1<<" to "<<j;
+        std::cout<<std::endl;
 
         
     }
@@ -111,17 +120,24 @@ void printOptimalSequnce(int n, int** &m, int** &s, int i, int j)
 
 int main()
 {
+    auto time_output = std::ofstream("../output/performance_analysis.txt");
     std::vector<unsigned int> random_list;
-    int** m;
+    unsigned long long** m;
     int** s;
-    std::array<int,21> N_list = {5,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200};
+    time_output<<"{";
+    std::array<int,43> N_list = {5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200};
     for(auto&& n:N_list)
     {
+        time_output<<"{"<<n<<",";
         random_list = getRandomList(n+1);
+        auto start = std::chrono::high_resolution_clock::now();
         run(n,random_list,m,s);
+        auto stop = std::chrono::high_resolution_clock::now();
+        time_output<<(stop-start).count()<<"}"<<",";
         printMatrix(random_list);
         printOptimalSequnce(n,m,s,0,n-1);
 
     }
+    time_output<<"}";
 
 }
