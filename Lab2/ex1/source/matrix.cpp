@@ -45,9 +45,34 @@ private:
 std::vector<unsigned int> getRandomList(int n)
 {
     std::vector<unsigned int> random_list;
-    std::srand(std::time(0));
-    for(int i=0;i<n;i++)
-        random_list.push_back(std::rand());
+    auto data_src = std::ifstream("../input/input.txt");
+    if(data_src.is_open())
+    {
+        for(int i=0;i<n;i++)
+        {
+            int item;
+            data_src>>item;
+            random_list.push_back(item);
+        }
+    }
+    else
+    {
+        std::srand(std::time(0));
+        auto data_output = std::ofstream("../input/input.txt");
+        for(int i=0;i<10;i++)
+        {
+            int item = std::rand();
+            data_output<<item<<std::endl;
+            random_list.push_back(item);
+        }
+        for(int i =0;i<500;i++)
+        {
+            int item = std::rand();
+            data_output<<item<<std::endl;
+        }
+        data_output.close();
+    }
+    
     return random_list;
 }
 
