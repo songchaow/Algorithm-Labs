@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "taskName": "build(release) ex1",
+            "taskName": "Lab1 build(release) ex1",
             "type": "shell",
             "command": "g++ ${file} -std=c++11  -o Lab1/ex1/source/a.exe",
             "problemMatcher": "$gcc",
@@ -14,7 +14,7 @@
             }
         },
         {
-            "taskName": "build(release) ex2",
+            "taskName": "Lab1 build(release) ex2",
             "type": "shell",
             "command": "g++ ${file} -std=c++11  -o Lab1/ex2/source/a.exe",
             "problemMatcher": "$gcc",
@@ -24,7 +24,7 @@
             }
         },
         {
-            "taskName": "linux build(release) ex1",
+            "taskName": "Lab1 linux build(release) ex1",
             "type": "shell",
             "command": "g++ ${file} -std=c++11 -ggdb -o Lab1/ex1/source/a.out",
             "problemMatcher": "$gcc",
@@ -34,9 +34,19 @@
             }
         },
         {
-            "taskName": "linux build(release) ex2",
+            "taskName": "Lab1 linux build(release) ex2",
             "type": "shell",
             "command": "g++ ${file} -std=c++11 -ggdb -o Lab1/ex2/source/a.out",
+            "problemMatcher": "$gcc",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "taskName": "Lab2 linux build(release) ex2",
+            "type": "shell",
+            "command": "g++ ${file} -std=c++11 -ggdb -o Lab2/ex2/source/a.out",
             "problemMatcher": "$gcc",
             "group": {
                 "kind": "build",
