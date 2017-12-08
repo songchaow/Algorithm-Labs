@@ -1,44 +1,65 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <array>
 #include <complex>
 #include <random>
 #include <cmath>
 using namespace std;
-
-vector<long double> create_random_coeff(int n)
+class RandomGenerator
 {
-    vector<long double> coeff_list;
-    // read from file. If the file doesn't exist, create one.
-    auto data_src = ifstream("../input/input.txt");
-    if(data_src.is_open())
+private:
+    ifstream data_src;
+    ofstream data_output;
+public:
+    RandomGenerator()
     {
-        for(int i=0;i<n;i++)
-        {
-            long double item;
-            data_src>>item;
-            coeff_list.push_back(item);
-        }
+        data_src = ifstream("../input/input.txt");
+    }
+    ~RandomGenerator()
+    {
         data_src.close();
+        if(data_output.is_open())
+            data_output.close();
     }
-    else
+
+    vector<long double> create_random_coeff(int n)
     {
-        auto data_output = std::ofstream("../input/input.txt");
-        for(int i=0;i<n;i++)
+        vector<long double> coeff_list;
+        // read from file. If the file doesn't exist, create one.
+        if(data_src.is_open())
         {
-            int item = std::rand();
-            data_output << (long double)item/10000.0L << std::endl;
-            coeff_list.push_back((long double)item/10000.0L);
+            for(int i=0;i<n;i++)
+            {
+                long double item;
+                data_src>>item;
+                coeff_list.push_back(item);
+            }
         }
-        for(int i=0;i<500;i++)
+        else
         {
-            int item = std::rand();
-            data_output << (long double)item/10000.0L << std::endl;
+            data_output = std::ofstream("../input/input.txt");
+            for(int i=0;i<n;i++)
+            {
+                int item = std::rand();
+                data_output << (long double)item/10000.0L << std::endl;
+                coeff_list.push_back((long double)item/10000.0L);
+            }
+            for(int i=0;i<500;i++)
+            {
+                int item = std::rand();
+                data_output << (long double)item/10000.0L << std::endl;
+            }
         }
-        data_output.close();
+            return coeff_list;
     }
-        return coeff_list;
-}
+    void rewind()
+    {
+        if(data_src.is_open())
+            data_src.seekg(0);
+    }
+};
+
 template<typename ElemType>
 void FFT_adjust(vector<ElemType> &coeff_list, int &paddle_digit)
 {
@@ -109,7 +130,7 @@ vector<complex<long double>> FFT_reverse(vector<complex<long double>> &value_lis
     // the size must have already been adjusted to power of 2 using `FFT_adjust`
     const long double PI = 3.14159265358979323846264338328;
     int n = value_list.size();
-    complex<long double> base_index =complex<long double>(0,-2*PI/n);
+    complex<long double> base_index =complex<long double>(0,2*PI/n);
     complex<long double> curr_index =0;
     complex<long double> current_root = 1;
     if(n==1)
@@ -132,11 +153,20 @@ vector<complex<long double>> FFT_reverse(vector<complex<long double>> &value_lis
     coeff_list.resize(n,0);
     for(int i = 0;i< n/2;i++)
     {
-        coeff_list[i] = (coeff_list1[i] + current_root*coeff_list2[i])/complex<long double>(n);
-        coeff_list[i+n/2] = (coeff_list1[i] - current_root*coeff_list2[i])/complex<long double>(n);
-        curr_index+=base_index;
+        coeff_list[i] = (coeff_list1[i] + current_root*coeff_list2[i]);
+        coeff_list[i+n/2] = (coeff_list1[i] - current_root*coeff_list2[i]);
+        curr_index-=base_index;
         current_root = exp(curr_index);
     }
+    return coeff_list;
+}
+
+vector<complex<long double>> FFT_reverse_wrapper(vector<complex<long double>> &value_list)
+{
+    auto coeff_list = FFT_reverse(value_list);
+    auto n_comp = complex<long double>(value_list.size(),0);
+    for(int i=0;i<coeff_list.size();i++)
+        coeff_list[i]/=n_comp;
     return coeff_list;
 }
 
@@ -169,7 +199,9 @@ int run(int n, vector<long double> &lista, vector<long double> &listb)
     auto val_list1 = FFT(lista);
     auto val_list2 = FFT(listb);
     auto val_list_multi = multiply_via_value(val_list1,val_list2);
-    auto coeff_multi = FFT_reverse(val_list_multi);
+    auto coeff_multi = FFT_reverse_wrapper(val_list_multi);
+    for(int i=0;i<n*2;i++)
+        cout<<coeff_multi[i]<<endl;
     for(int i=paddle_digit1+paddle_digit2;i>0;i--)
         coeff_multi.pop_back();
 
@@ -177,8 +209,14 @@ int run(int n, vector<long double> &lista, vector<long double> &listb)
 
 int main()
 {
-    int n = 32;
-    auto coeff1 = create_random_coeff(n);
-    auto coeff2 = create_random_coeff(n);
-    run(32,coeff1,coeff2);
+    RandomGenerator gen;
+    array<int,32> n_list={4,16,32,40,45,50,55,60,65,70,75,80,85,90,95,100,105,110,115,120,130,140,150,160,170,180,190,200,210,220,230,240};
+    for(auto&& n:n_list)
+    {
+        gen.rewind();
+        auto coeff1 = gen.create_random_coeff(n);
+        auto coeff2 = gen.create_random_coeff(n);
+        run(32,coeff1,coeff2);
+    }
+    
 }
