@@ -6,30 +6,36 @@
 #include <cmath>
 using namespace std;
 
-vector<double> create_random_coeff(int n)
+vector<long double> create_random_coeff(int n)
 {
-    vector<double> coeff_list;
+    vector<long double> coeff_list;
     // read from file. If the file doesn't exist, create one.
     auto data_src = ifstream("../input/input.txt");
     if(data_src.is_open())
     {
         for(int i=0;i<n;i++)
         {
-            double item;
+            long double item;
             data_src>>item;
             coeff_list.push_back(item);
         }
+        data_src.close();
     }
     else
     {
         auto data_output = std::ofstream("../input/input.txt");
-        for(int i=0;i<10;i++)
+        for(int i=0;i<n;i++)
         {
             int item = std::rand();
-            data_output << (double)item/10000.0L << std::endl;
-            coeff_list.push_back((double)item/10000.0L);
+            data_output << (long double)item/10000.0L << std::endl;
+            coeff_list.push_back((long double)item/10000.0L);
         }
-        
+        for(int i=0;i<500;i++)
+        {
+            int item = std::rand();
+            data_output << (long double)item/10000.0L << std::endl;
+        }
+        data_output.close();
     }
         return coeff_list;
 }
@@ -60,85 +66,90 @@ void FFT_double(vector<ElemType> &coeff_list, int &paddle_digit)
     }
 }
 
-vector<complex<double>> FFT(vector<double> &coeff_list)
+vector<complex<long double>> FFT(vector<long double> &coeff_list)
 {
-    vector<complex<double>> val_list;
+    vector<complex<long double>> val_list;
     // the size must have already been adjusted to power of 2 using `FFT_adjust`
-    const double PI = std::acos(-1);
+    const long double PI = 3.14159265358979323846264338328;
     int n = coeff_list.size();
-    complex<double> base_root = exp(2*PI/n);
-    complex<double> current_root = 1;
+    complex<long double> base_index =complex<long double>(0,2*PI/n);
+    complex<long double> curr_index =0;
+    complex<long double> current_root = 1;
     if(n==1)
     {
-        val_list.push_back(complex<double>(coeff_list[0],0));
+        val_list.push_back(complex<long double>(coeff_list[0],0));
         return val_list;
     }
     // construct sub coefficient lists
-    vector<double> coeff_sub1,coeff_sub2;
-    for(vector<double>::iterator it = coeff_list.begin();it<coeff_list.end();it+=2)
+    vector<long double> coeff_sub1,coeff_sub2;
+    for(vector<long double>::iterator it = coeff_list.begin();it<coeff_list.end();it+=2)
     {
         coeff_sub1.push_back(*it);
     }
-    for(vector<double>::iterator it = coeff_list.begin()+1;it<coeff_list.end();it+=2)
+    for(vector<long double>::iterator it = coeff_list.begin()+1;it<coeff_list.end();it+=2)
     {
         coeff_sub2.push_back(*it);
     }
-    vector<complex<double>> val_list1 = FFT(coeff_sub1);
-    vector<complex<double>> val_list2 = FFT(coeff_sub2);
-    val_list.reserve(n);
+    vector<complex<long double>> val_list1 = FFT(coeff_sub1);
+    vector<complex<long double>> val_list2 = FFT(coeff_sub2);
+    val_list.resize(n,0);
     for(int i = 0;i< n/2;i++)
     {
         val_list[i] = val_list1[i] + current_root*val_list2[i];
         val_list[i+n/2] = val_list1[i] - current_root*val_list2[i];
-        current_root = current_root*base_root;
+        curr_index+=base_index;
+        current_root = exp(curr_index);
     }
     return val_list;
 }
 
-vector<complex<double>> FFT_reverse(vector<complex<double>> &value_list)
+vector<complex<long double>> FFT_reverse(vector<complex<long double>> &value_list)
 {
-    vector<complex<double>> coeff_list;
+    vector<complex<long double>> coeff_list;
     // the size must have already been adjusted to power of 2 using `FFT_adjust`
-    const double PI = std::acos(-1);
+    const long double PI = 3.14159265358979323846264338328;
     int n = value_list.size();
-    complex<double> base_root = exp(-2*PI/n);
-    complex<double> current_root = 1;
+    complex<long double> base_index =complex<long double>(0,-2*PI/n);
+    complex<long double> curr_index =0;
+    complex<long double> current_root = 1;
     if(n==1)
     {
         coeff_list.push_back(value_list[0]);
         return coeff_list;
     }
     // construct sub coefficient lists
-    vector<complex<double>> coeff_sub1,coeff_sub2;
-    for(vector<complex<double>>::iterator it = value_list.begin();it<value_list.end();it+=2)
+    vector<complex<long double>> value_sub1,value_sub2;
+    for(vector<complex<long double>>::iterator it = value_list.begin();it<value_list.end();it+=2)
     {
-        coeff_sub1.push_back(*it);
+        value_sub1.push_back(*it);
     }
-    for(vector<complex<double>>::iterator it = value_list.begin()+1;it<value_list.end();it+=2)
+    for(vector<complex<long double>>::iterator it = value_list.begin()+1;it<value_list.end();it+=2)
     {
-        coeff_sub2.push_back(*it);
+        value_sub2.push_back(*it);
     }
-    vector<complex<double>> coeff_list1 = FFT_reverse(coeff_sub1);
-    vector<complex<double>> coeff_list2 = FFT_reverse(coeff_sub2);
-    coeff_list.reserve(n);
+    vector<complex<long double>> coeff_list1 = FFT_reverse(value_sub1);
+    vector<complex<long double>> coeff_list2 = FFT_reverse(value_sub2);
+    coeff_list.resize(n,0);
     for(int i = 0;i< n/2;i++)
     {
-        coeff_list[i] = coeff_list1[i] + current_root*coeff_list2[i];
-        coeff_list[i+n/2] = coeff_list1[i] - current_root*coeff_list2[i];
+        coeff_list[i] = (coeff_list1[i] + current_root*coeff_list2[i])/complex<long double>(n);
+        coeff_list[i+n/2] = (coeff_list1[i] - current_root*coeff_list2[i])/complex<long double>(n);
+        curr_index+=base_index;
+        current_root = exp(curr_index);
     }
     return coeff_list;
 }
 
-vector<complex<double>> multiply_via_value(vector<complex<double>> &val_list1, vector<complex<double>> &val_list2)
+vector<complex<long double>> multiply_via_value(vector<complex<long double>> &val_list1, vector<complex<long double>> &val_list2)
 {
-    vector<complex<double>> post_multi;
+    vector<complex<long double>> post_multi;
     // the size of the two must be equal
     for(int i=0;i<val_list1.size();i++)
         post_multi.push_back(val_list1[i]*val_list2[i]);
     return post_multi;
 }
 
-int run(int n, vector<double> &lista, vector<double> &listb)
+int run(int n, vector<long double> &lista, vector<long double> &listb)
 {
     srand(time(0));
     // record how many zero digits have been paddled
