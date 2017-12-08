@@ -112,40 +112,48 @@ int run(int n,std::vector<unsigned int> &random_list,unsigned long long** &m, in
 
 }
 
-void printMatrix(std::vector<unsigned int> &random_list)
+void printMatrix(std::ofstream &data_output,std::vector<unsigned int> &random_list)
 {
-    std::cout<<random_list.size()-1<<" Matrix's sizes are shown below."<<std::endl;
+    data_output<<random_list.size()-1<<" Matrix's sizes are shown below."<<std::endl;
     // size() returns n+1
     for(int i = 0; i < random_list.size()-1; i++)
-        std::cout<<"Height: "<<random_list[i]<<" Length: "<<random_list[i+1]<<std::endl;
+        data_output<<"Height: "<<random_list[i]<<" Length: "<<random_list[i+1]<<std::endl;
 }
 
-void printOptimalSequnce(int n, unsigned long long** &m, int** &s, int i, int j)
+void printOptimalSequnce(std::ofstream& data_output,int n, unsigned long long** &m, int** &s, int i, int j)
 {
     if(i!=j)
     {
         int k = s[i][j];
-        printOptimalSequnce(n,m,s,i,k);
-        printOptimalSequnce(n,m,s,k+1,j);
-        std::cout<<"Multiply matrix ";
-        if(k==i)
-            std::cout<<i;
-        else
-            std::cout<<"group "<<i<<" to "<<k;
-        std::cout<<" and matrix ";
-        if(k+1==j)
-            std::cout<<j;
-        else
-            std::cout<<"group "<<k+1<<" to "<<j;
-        std::cout<<std::endl;
-
-        
+        data_output<<"(";
+        printOptimalSequnce(data_output,n,m,s,i,k);
+        data_output<<",";
+        printOptimalSequnce(data_output,n,m,s,k+1,j);
+        data_output<<")";
+        // if(k==i)
+        //     std::cout<<i;
+        // else
+        //     std::cout<<"group "<<i<<" to "<<k;
+        // std::cout<<" and matrix ";
+        // if(k+1==j)
+        //     std::cout<<j;
+        // else
+        //     std::cout<<"group "<<k+1<<" to "<<j;
+        // std::cout<<std::endl;
     }
+    else data_output<<i;
+}
+
+void printOptimalSequnceWrapper(std::ofstream &data_output,int n, unsigned long long** &m, int** &s, int i, int j)
+{
+    printOptimalSequnce(data_output,n,m,s,i,j);
+    data_output<<std::endl;
 }
 
 int main()
 {
     auto time_output = std::ofstream("../output/performance_analysis.txt");
+    auto data_output = std::ofstream("../output/data_result.txt");
     std::vector<unsigned int> random_list;
     unsigned long long** m;
     int** s;
@@ -159,10 +167,11 @@ int main()
         run(n,random_list,m,s);
         auto stop = std::chrono::high_resolution_clock::now();
         time_output<<(stop-start).count()<<"}"<<",";
-        printMatrix(random_list);
-        printOptimalSequnce(n,m,s,0,n-1);
+        printMatrix(data_output,random_list);
+        printOptimalSequnceWrapper(data_output,n,m,s,0,n-1);
 
     }
     time_output<<"}";
-
+    time_output.close();
+    data_output.close();
 }

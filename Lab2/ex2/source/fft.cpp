@@ -230,10 +230,10 @@ int main()
         auto start = std::chrono::high_resolution_clock::now();
         run(result,coeff1,coeff2);
         auto stop = std::chrono::high_resolution_clock::now();
-        data_output << "Multiply results of n=" << n <<endl;
+        data_output << "Coefficients of multiply results of n=" << n <<endl;
         time_output << (stop-start).count()<<"}"<<",";
         for(auto&& item:result) // length is not neccessarily n.
-            data_output<<item<<endl;
+            data_output<<item.real()<<endl;
     }
     time_output<<"}";
     time_output.close();
