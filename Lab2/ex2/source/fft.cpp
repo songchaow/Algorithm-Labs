@@ -5,6 +5,7 @@
 #include <complex>
 #include <random>
 #include <cmath>
+#include <chrono>
 using namespace std;
 class RandomGenerator
 {
@@ -179,7 +180,7 @@ vector<complex<long double>> multiply_via_value(vector<complex<long double>> &va
     return post_multi;
 }
 
-int run(int n, vector<long double> &lista, vector<long double> &listb)
+int run(vector<complex<long double>> &result,vector<long double> &lista, vector<long double> &listb)
 {
     srand(time(0));
     // record how many zero digits have been paddled
@@ -191,6 +192,7 @@ int run(int n, vector<long double> &lista, vector<long double> &listb)
        But 3 may be encountered in other cases, when polynoials with different
        term numbers are multiplied.
      */
+    int n = lista.size();
     int paddle_digit1=0,paddle_digit2=0;
     FFT_adjust(lista,paddle_digit1);
     FFT_adjust(listb,paddle_digit2);
@@ -199,24 +201,43 @@ int run(int n, vector<long double> &lista, vector<long double> &listb)
     auto val_list1 = FFT(lista);
     auto val_list2 = FFT(listb);
     auto val_list_multi = multiply_via_value(val_list1,val_list2);
-    auto coeff_multi = FFT_reverse_wrapper(val_list_multi);
-    for(int i=0;i<n*2;i++)
-        cout<<coeff_multi[i]<<endl;
-    for(int i=paddle_digit1+paddle_digit2;i>0;i--)
-        coeff_multi.pop_back();
+    result = FFT_reverse_wrapper(val_list_multi);
+    for(int i=paddle_digit1+paddle_digit2+1;i>0;i--)
+        result.pop_back();
 
 }
 
 int main()
 {
+    auto time_output = std::ofstream("../output/performance_analysis.txt");
+    auto data_output = std::ofstream("../output/data.txt");
     RandomGenerator gen;
     array<int,32> n_list={4,16,32,40,45,50,55,60,65,70,75,80,85,90,95,100,105,110,115,120,130,140,150,160,170,180,190,200,210,220,230,240};
+    time_output<<"{";
     for(auto&& n:n_list)
     {
+        time_output<<"{"<<n<<",";
         gen.rewind();
+        vector<complex<long double>> result;
         auto coeff1 = gen.create_random_coeff(n);
         auto coeff2 = gen.create_random_coeff(n);
-        run(32,coeff1,coeff2);
+        data_output << "Coefficients of the first polynomial with length "<<n<<":"<<endl;
+        for(int i=0;i<n;i++)
+            data_output<<coeff1[i]<<endl;
+        data_output << "Coefficients of the second polynomial with length "<<n<<":"<<endl;
+        for(int i=0;i<n;i++)
+            data_output<<coeff2[i]<<endl;
+        auto start = std::chrono::high_resolution_clock::now();
+        run(result,coeff1,coeff2);
+        auto stop = std::chrono::high_resolution_clock::now();
+        data_output << "Multiply results of n=" << n <<endl;
+        time_output << (stop-start).count()<<"}"<<",";
+        for(auto&& item:result) // length is not neccessarily n.
+            data_output<<item<<endl;
     }
+    time_output<<"}";
+    time_output.close();
+    data_output.close();
+    return 0;
     
 }
