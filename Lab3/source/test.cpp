@@ -17,4 +17,11 @@ int main()
     bintree.delete_(el);
     el = bintree.search(29);
     bintree.delete_(el);
+
+    el = rbtree.search(17);
+    rbtree.delete_(el);
+    el = rbtree.search(21);
+    rbtree.delete_(el);
+    el = rbtree.search(29);
+    rbtree.delete_(el);
 }
