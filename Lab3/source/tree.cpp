@@ -121,10 +121,16 @@ class BinSearchTree
             // there are three parts: p, p_succ, p_succ->right
             // 8 operations are needed
             // determine p's father
-            if (p->p->lchild == p)
-                p->p->lchild = p_succ;
-            else if (p->p->rchild == p)
-                p->p->rchild = p_succ;
+            
+            if(p==BinSearchTree<ElementT>::head)
+                BinSearchTree<ElementT>::head = p;
+            else
+            {
+                if (p->p->lchild == p)
+                    p->p->lchild = p_succ;
+                else if (p->p->rchild == p)
+                    p->p->rchild = p_succ;
+            }
 
             p_succ->lchild = p->lchild;
             p->lchild->p = p_succ;
@@ -425,10 +431,15 @@ public:
             // there are three parts: p, p_succ, p_succ->right
             // 8 operations are needed
             // determine p's father
-            if (p->p->lchild == p)
-                p->p->lchild = p_succ;
-            else if (p->p->rchild == p)
-                p->p->rchild = p_succ;
+            if(p==BinSearchTree<ElementT>::head)
+                BinSearchTree<ElementT>::head = p;
+            else
+            {
+                if (p->p->lchild == p)
+                    p->p->lchild = p_succ;
+                else if (p->p->rchild == p)
+                    p->p->rchild = p_succ;
+            }
 
             p_succ->lchild = p->lchild;
             p->lchild->p = p_succ;
