@@ -113,7 +113,7 @@ class BinSearchTree
         else
         // CASE III: oops!! the most awful thing happens!
         {
-            // first, we should find the successor of p
+            // first, we should find the successor of p, p_succ
             auto p_succ = p->rchild;
             while (p_succ->lchild != nullptr)
                 // travels to the left
@@ -128,13 +128,16 @@ class BinSearchTree
 
             p_succ->lchild = p->lchild;
             p->lchild->p = p_succ;
-            p_succ->p->lchild = p_succ->rchild;
-            if (p_succ->rchild)
-                p_succ->rchild->p = p_succ->p;
+            if(p_succ != p->rchild)
+            {
+                p_succ->p->lchild = p_succ->rchild;
+                if (p_succ->rchild)
+                    p_succ->rchild->p = p_succ->p;
+                p_succ->rchild = p->rchild;
+                p->rchild->p = p_succ;
+            }
             p_succ->p = p->p;
-            p_succ->rchild = p->rchild;
-            p->rchild->p = p_succ;
-
+            
             delete p;
         }
     }

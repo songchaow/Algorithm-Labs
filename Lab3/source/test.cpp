@@ -14,5 +14,7 @@ int main()
         rbtree.insert(el);
     }
     auto el = bintree.search(17);
-
+    bintree.delete_(el);
+    el = bintree.search(29);
+    bintree.delete_(el);
 }
