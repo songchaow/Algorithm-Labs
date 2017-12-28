@@ -6,12 +6,20 @@ class BinSearchTree
     typedef struct TreeNode
     {
         ElementT data;
+        unsigned int size;
         TreeNode *lchild;
         TreeNode *rchild;
         TreeNode *p;
         bool isred;
     } Node;
-
+    int getSize()
+    {
+        return head->size;
+    }
+    Node *getHead()
+    {
+        return head;
+    }
     Node *search(ElementT key)
     {
         return _search(key, head);
@@ -28,6 +36,7 @@ class BinSearchTree
         {
             head = node_ptr;
             head->p = nullptr;
+            head->size = 1;
             return head;
         }
         while (true)
@@ -36,13 +45,16 @@ class BinSearchTree
             {
                 if (p->lchild)
                 {
+                    p->size++;
                     p = p->lchild;
                     continue;
                 }
                 else
                 {
+                    p->size++;
                     p->lchild = node_ptr;
                     node_ptr->p = p;
+                    node_ptr->size = 1;
                     break;
                 }
             }
@@ -50,13 +62,16 @@ class BinSearchTree
             {
                 if (p->rchild)
                 {
+                    p->size++;
                     p = p->rchild;
                     continue;
                 }
                 else
                 {
+                    p->size++;
                     p->rchild = node_ptr;
                     node_ptr->p = p;
+                    node_ptr->size = 1;
                     break;
                 }
             }
@@ -71,13 +86,15 @@ class BinSearchTree
             if (p->p->rchild == p)
             {
                 p->p->rchild = nullptr;
-                delete p;
             }
             else if (p->p->lchild == p)
             {
                 p->p->lchild = nullptr;
-                delete p;
             }
+            // modify the size field
+            for(auto q=p->p;q!=nullptr;q=q->p)
+                p->size--;
+            delete p;
         }
         //  CASE II: one of the two children is null
         else if (p->lchild == nullptr)
@@ -86,14 +103,15 @@ class BinSearchTree
             {
                 p->p->rchild = p->rchild;
                 p->rchild->p = p->p;
-                delete p;
             }
             else if (p->p->lchild == p)
             {
                 p->p->lchild = p->rchild;
                 p->rchild->p = p->p;
-                delete p;
             }
+            for(auto q=p->p;q!=nullptr;q=q->p)
+                p->size--;
+            delete p;
         }
         else if (p->rchild == nullptr)
         {
@@ -101,14 +119,15 @@ class BinSearchTree
             {
                 p->p->rchild = p->lchild;
                 p->lchild->p = p->p;
-                delete p;
             }
             else if (p->p->lchild == p)
             {
                 p->p->lchild = p->lchild;
                 p->lchild->p = p->p;
-                delete p;
             }
+            for(auto q=p->p;q!=nullptr;q=q->p)
+                p->size--;
+            delete p;
         }
         else
         // CASE III: oops!! the most awful thing happens!
@@ -118,6 +137,8 @@ class BinSearchTree
             while (p_succ->lchild != nullptr)
                 // travels to the left
                 p_succ = p_succ->lchild;
+            p_succ->size = p->size;
+            auto p_father = p_succ->p;
             // there are three parts: p, p_succ, p_succ->right
             // 8 operations are needed
             // determine p's father
@@ -144,8 +165,15 @@ class BinSearchTree
             }
             p_succ->p = p->p;
 
+            for(auto q=p_father;q!=nullptr;q=q->p)
+                q->size--;
+
             delete p;
         }
+    }
+    Node *select(int index)
+    {
+        _select(head, index);
     }
 
   protected:
@@ -170,6 +198,15 @@ class BinSearchTree
             else
                 return nullptr;
         }
+    }
+    Node *_select(Node *tree, int index)
+    {
+        auto r = tree->lchild? (tree->lchild->size + 1):1;
+        if(index == r)
+            return tree;
+        else if(index < r)
+            return _select(tree->lchild,index);
+        else return _select(tree->rchild,index-r);
     }
 };
 
@@ -200,6 +237,9 @@ class RedBlackTree : public BinSearchTree<ElementT>
 
         x->p = new_root;
         new_root->lchild = x;
+        // modify size fields
+        new_root->size = x->size;
+        x->size = x->lchild? x->lchild->size:0 + x->rchild? x->rchild->size:0 + 1;
     }
     void rightRotate(typename BinSearchTree<ElementT>::Node *x)
     {
@@ -222,6 +262,9 @@ class RedBlackTree : public BinSearchTree<ElementT>
 
         x->p = new_root;
         new_root->rchild = x;
+        // modify size fields
+        new_root->size = x->size;
+        x->size = x->lchild? x->lchild->size:0 + x->rchild? x->rchild->size:0 + 1;
     }
     void delete_fixup(typename BinSearchTree<ElementT>::Node *x, typename BinSearchTree<ElementT>::Node *x_father = nullptr)
     {
@@ -293,8 +336,9 @@ class RedBlackTree : public BinSearchTree<ElementT>
             }
         }
     }
-
+    
   public:
+    
     void insert(ElementT key)
     {
         auto node = BinSearchTree<ElementT>::insert(key);
@@ -373,6 +417,9 @@ class RedBlackTree : public BinSearchTree<ElementT>
                 p->p->rchild = nullptr;
             else if (p->p->lchild == p)
                 p->p->lchild = nullptr;
+            // modify the size field
+            for(auto q=p->p;q!=nullptr;q=q->p)
+                p->size--;
             delete_fixup(nullptr, p->p);
             delete p;
         }
@@ -389,6 +436,8 @@ class RedBlackTree : public BinSearchTree<ElementT>
                 p->p->lchild = p->rchild;
                 p->rchild->p = p->p;
             }
+            for(auto q=p->p;q!=nullptr;q=q->p)
+                p->size--;
             if (!(p->isred))
             {
                 if (p->rchild)
@@ -410,6 +459,8 @@ class RedBlackTree : public BinSearchTree<ElementT>
                 p->p->lchild = p->lchild;
                 p->lchild->p = p->p;
             }
+            for(auto q=p->p;q!=nullptr;q=q->p)
+                p->size--;
             if (!(p->isred))
             {
                 if (p->lchild)
@@ -427,6 +478,7 @@ class RedBlackTree : public BinSearchTree<ElementT>
             while (p_succ->lchild != nullptr)
                 // travels to the left
                 p_succ = p_succ->lchild;
+            p_succ->size = p->size;
             original_color = p_succ->isred;
             auto p_father = p_succ->p;
             auto z = p_succ->rchild;
@@ -455,6 +507,9 @@ class RedBlackTree : public BinSearchTree<ElementT>
                 p->rchild->p = p_succ;
             }
             p_succ->p = p->p;
+
+            for(auto q=p_father;q!=nullptr;q=q->p)
+                q->size--;
             // check if neccessary to fix up
             if (original_color == false)
             {
