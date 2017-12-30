@@ -1,6 +1,7 @@
 #include <vector>
 #include <list>
 #include <map>
+#include <set>
 #include <algorithm>
 using namespace std;
 
@@ -21,6 +22,7 @@ public:
         Color color;
         void* p; // parent
     } DFSNodeRecord;
+    typedef map<void*,DFSNodeRecord> DFSState;
 private:
     map<void*,DFSNodeRecord> DFSResult;
     int time = 0;
@@ -29,13 +31,14 @@ public:
     DFSTool(DirectedGraph& g) : g(g)
     {
         // make data record for each Gnode
-        for(auto&& point:g.pointlist)
+        for(auto&& point : g.pointlist)
         {
             DFSNodeRecord record;
             record.color = Color::WHITE;
-            DFSResult.insert(make_pair<void*,DFSNodeRecord>(&point,record));
+            DFSResult.insert(pair<DirectedGraph::GNode*,DFSNodeRecord>(&point,record));
         }
     }
+    
     void clear()
     {
         // clear the runtime record stored in DFSResult
@@ -43,7 +46,7 @@ public:
             point.second.color = Color::WHITE;
         time = 0;
     }
-    map<void*,DFSNodeRecord> getDFSResult()
+    DFSState getDFSResult()
     {
         return DFSResult;
     }
@@ -73,14 +76,23 @@ public:
             // with some other nodes being white. There will be no grey nodes.
             if(DFSResult[&gnode].color == Color::WHITE)
             {
-                DFSResult[&gnode].p = nullptr; // the root
+                DFSResult[&gnode].p = &gnode; // the root
                 DFSVisit(&gnode);
             }
         }
     }
-    void reOrderedDFS(map<void*,DFSNodeRecord>& node_seq)
+    void reOrderedDFS(DFSState& node_seq) 
     {
-
+        // used to find the SSC
+        for(auto&& node_rec:node_seq)
+        {
+            auto gnode = (DirectedGraph::GNode*)node_rec.first;
+            if(DFSResult[gnode].color == Color::WHITE)
+            {
+                DFSResult[&gnode].p = &gnode; // the root
+                DFSVisit(gnode);
+            }
+        }
     }
 
 };
@@ -130,18 +142,19 @@ public:
         fEdge->pointee = pointee;
         pointer->fedge = fEdge;
     }
-    void makeSet(GNode* node)
+    void makeSet(GNode* node, DFSTool::DFSState&& dfs_result) //abandoned
     {
+        dfs_result[node].p = node;
         node->p = node;
         node->rank = 0;
     }
-    GNode* findSet(GNode* node)
+    GNode* findSet(GNode* node, DFSTool::DFSState& dfs_result)
     {
-        if(node != node->p)
-            node->p = findSet(node->p);
-        return node->p;
+        if(node != dfs_result[node].p)
+            dfs_result[node].p = findSet((GNode*)dfs_result[node].p, dfs_result);
+        return (GNode*)dfs_result[node].p;
     }
-    void link(GNode* node1, GNode* node2)
+    void link(GNode* node1, GNode* node2) // abandoned
     {
         if(node1->rank>node2->rank)
             node2->p = node1;
@@ -153,10 +166,10 @@ public:
         }
         
     }
-    void union_(GNode* node1, GNode* node2)
-    {
-        link(findSet(node1),findSet(node2));
-    }
+    // void union_(GNode* node1, GNode* node2) // abandoned
+    // {
+    //     link(findSet(node1),findSet(node2));
+    // }
     DirectedGraph transpose()
     {
         // a temporary map is required to convert old ptrs to new ones
@@ -187,7 +200,7 @@ public:
         }
         return gt;
     }
-    void find_gcc()
+    void find_scc()
     {
         DFSTool tool1 = DFSTool(*this);
         tool1.DFS();
@@ -199,11 +212,21 @@ public:
              return a.second.time_f != b.second.time_f?  a.second.time_f > b.second.time_f : a.first < b.first;
         };
         sort(node_seq.begin(),node_seq.end(),cmp);
-        for(auto&& node_rec:node_seq)
+        tool2.reOrderedDFS(node_seq);
+        // now, generate scc
+        // each pair's first stores the representative.
+        map<GNode*,vector<GNode*>> scc_set;
+        auto dfs_result = tool2.getDFSResult();
+        for(auto&& record: dfs_result)
         {
-            auto gnode = (DirectedGraph::GNode*)node_rec.first;
-            if(DFSResult[gnode].color == Color::WHITE)
-
+            GNode* node = (GNode*)record.first;
+            auto representative = findSet(node,dfs_result);
+            if(scc_set.find(representative) != scc_set.end())
+            {
+                scc_set[representative].push_back(node);
+            }
+            else
+                scc_set.insert(pair<GNode*,vector<GNode*>>(representative,vector<GNode*>()));
         }
     }
 
