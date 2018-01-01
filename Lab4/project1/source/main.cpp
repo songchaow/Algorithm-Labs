@@ -2,6 +2,8 @@
 #include <array>
 #include <fstream>
 #include <cmath>
+#include <cstdlib>
+#include <string>
 #include "graph.cpp"
 using namespace std;
 void serializer(DirectedGraph &g)
@@ -13,12 +15,15 @@ void serializer(DirectedGraph &g)
     for(auto&& point: g.pointlist)
     {
         auto edge = point.fedge;
+        if(edge == nullptr)
+            fdot << "\"" << &point << "\"" << ";" << endl;
         while(edge != nullptr)
         {
-            fdot << &point << " -> " << edge->pointee <<";" <<endl;
+            fdot << "\"" << &point << "\"" << " -> " << "\"" << edge->pointee << "\"" <<";" <<endl;
             edge = edge->next;
         }
     } 
+    fdot << "}" <<endl;
 }
 
 void add_random_edge(DirectedGraph &g, int scale)
@@ -27,8 +32,9 @@ void add_random_edge(DirectedGraph &g, int scale)
     // generate `scale` edges at random.
     int nodenum = g.pointlist.size();
     int edge_added = 0;
-    for(;edge_added<=scale;)
+    for(;edge_added<scale;)
     {
+        bool continue_flag = false;
         // randomly choose a GNode
         int node_index = rand()%nodenum;
         // randomly choose a pointee
@@ -38,10 +44,14 @@ void add_random_edge(DirectedGraph &g, int scale)
         while(edge != nullptr)
         {
             if(edge->pointee == &g.pointlist[pointee_index])
-                continue; // try again
+            {
+                continue_flag = true;
+                break;
+            }
             edge = edge->next;
         }
-        g.addEdge(&g.pointlist[node_index],&g.pointlist[node_index]);
+        if(continue_flag) continue; // try again, without increasing `edge_added`
+        g.addEdge(&g.pointlist[node_index],&g.pointlist[pointee_index]);
         edge_added++;
     }
     
@@ -49,11 +59,12 @@ void add_random_edge(DirectedGraph &g, int scale)
 int run(int scale)
 {
     DirectedGraph g;
-    int edgescale = log((double)scale);
+    int edgescale = scale*log((double)scale);
     for(int i = 0;i<scale;i++)
         g.addNode();
     add_random_edge(g,edgescale);
     serializer(g);
+    system(("dot -Tpdf graph >> graph"+to_string(scale)+".pdf").c_str());
     return 0;
 }
 
