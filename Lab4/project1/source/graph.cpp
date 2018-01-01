@@ -3,57 +3,38 @@
 #include <map>
 #include <set>
 #include <algorithm>
+#include "graph.h"
 using namespace std;
 
-class DFSTool
-{
-private:
-    enum Color
-    {
-        WHITE,
-        GREY,
-        BLACK
-    };
-public:
-    typedef struct DFSData
-    {
-        int time_d;
-        int time_f;
-        Color color;
-        void* p; // parent
-    } DFSNodeRecord;
-    typedef map<void*,DFSNodeRecord> DFSState;
-private:
-    map<void*,DFSNodeRecord> DFSResult;
-    int time = 0;
-    DirectedGraph& g;
-public:
-    DFSTool(DirectedGraph& g) : g(g)
+class DirectedGraph;
+
+
+    DFSTool::DFSTool(DirectedGraph& g) : g(g)
     {
         // make data record for each Gnode
         for(auto&& point : g.pointlist)
         {
             DFSNodeRecord record;
             record.color = Color::WHITE;
-            DFSResult.insert(pair<DirectedGraph::GNode*,DFSNodeRecord>(&point,record));
+            DFSResult.insert(pair<GNode*,DFSNodeRecord>(&point,record));
         }
     }
     
-    void clear()
+    void DFSTool::clear()
     {
         // clear the runtime record stored in DFSResult
         for(auto&& point:DFSResult)
             point.second.color = Color::WHITE;
         time = 0;
     }
-    DFSState getDFSResult()
+    DFSTool::DFSState DFSTool::getDFSResult()
     {
         return DFSResult;
     }
-    void DFSVisit(DirectedGraph::GNode* node)
+    void DFSTool::DFSVisit(GNode* node)
     {
         // there may be GREY nodes in previous unfinished visits.
-        if(DFSResult[node].color == Color::WHITE)
+        if(DFSResult[(void*)node].color == Color::WHITE)
         {
             time++;
             DFSResult[node].color = Color::GREY;
@@ -68,7 +49,7 @@ public:
             DFSResult[node].color = Color::BLACK;
         }
     }
-    void DFS()
+    void DFSTool::DFS()
     {
         for(auto&& gnode:g.pointlist)
         {
@@ -81,12 +62,12 @@ public:
             }
         }
     }
-    void reOrderedDFS(DFSState& node_seq) 
+    void DFSTool::reOrderedDFS(vector<pair<void*,DFSTool::DFSNodeRecord>>& node_seq) 
     {
         // used to find the SSC
         for(auto&& node_rec:node_seq)
         {
-            auto gnode = (DirectedGraph::GNode*)node_rec.first;
+            auto gnode = (GNode*)node_rec.first;
             if(DFSResult[gnode].color == Color::WHITE)
             {
                 DFSResult[&gnode].p = &gnode; // the root
@@ -95,38 +76,8 @@ public:
         }
     }
 
-};
 
-class DirectedGraph
-{
-private:
-    struct EdgeNode;
-public:
-    typedef struct GraphNode
-    {
-        void* meta;
-        EdgeNode* fedge;
-        GraphNode* p; // used for root-tree
-        int rank; // used for root-tree
-    } GNode;
-
-private:
-    
-    typedef struct EdgeNode
-    {
-        GNode* pointee;
-        EdgeNode* next;
-    } ENode;
-    
-    // rewrite DFS:
-        // sort the pairs stored in DFSResult according to time_f.
-        
-
-    
-public:
-    
-    vector<GNode> pointlist;
-    GNode* addNode(void* meta = nullptr)
+    GNode* DirectedGraph::addNode(void* meta)
     {
         GNode node;
         node.meta = meta;
@@ -134,7 +85,7 @@ public:
         node.p = nullptr; // it doesn't belong to any sets initially
         pointlist.push_back(node);
     }
-    void addEdge(GNode* pointer, GNode* pointee)
+    void DirectedGraph::addEdge(GNode* pointer, GNode* pointee)
     {
         auto secondEdge = pointer->fedge;
         auto fEdge = new ENode;
@@ -142,19 +93,19 @@ public:
         fEdge->pointee = pointee;
         pointer->fedge = fEdge;
     }
-    void makeSet(GNode* node, DFSTool::DFSState&& dfs_result) //abandoned
+    void DirectedGraph::makeSet(GNode* node, DFSTool::DFSState&& dfs_result) //abandoned
     {
         dfs_result[node].p = node;
         node->p = node;
         node->rank = 0;
     }
-    GNode* findSet(GNode* node, DFSTool::DFSState& dfs_result)
+    GNode* DirectedGraph::findSet(GNode* node, DFSTool::DFSState& dfs_result)
     {
         if(node != dfs_result[node].p)
             dfs_result[node].p = findSet((GNode*)dfs_result[node].p, dfs_result);
         return (GNode*)dfs_result[node].p;
     }
-    void link(GNode* node1, GNode* node2) // abandoned
+    void DirectedGraph::link(GNode* node1, GNode* node2) // abandoned
     {
         if(node1->rank>node2->rank)
             node2->p = node1;
@@ -170,7 +121,7 @@ public:
     // {
     //     link(findSet(node1),findSet(node2));
     // }
-    DirectedGraph transpose()
+    DirectedGraph DirectedGraph::transpose()
     {
         // a temporary map is required to convert old ptrs to new ones
         map<GNode*,GNode*> new_ptr;
@@ -200,18 +151,16 @@ public:
         }
         return gt;
     }
-    void find_scc()
+    void DirectedGraph::find_scc()
     {
         DFSTool tool1 = DFSTool(*this);
         tool1.DFS();
-        map<void*,DFSTool::DFSNodeRecord> node_seq = tool1.getDFSResult();
+        auto node_seq_tree = tool1.getDFSResult();
+        vector<pair<void*,DFSTool::DFSNodeRecord>> node_seq(node_seq_tree.begin(),node_seq_tree.end());
         DirectedGraph gt = transpose();
         DFSTool tool2 = DFSTool(gt);
-        auto cmp = [](std::pair<void*,DFSTool::DFSNodeRecord> const & a, std::pair<void*,DFSTool::DFSNodeRecord> const & b) 
-        { 
-             return a.second.time_f != b.second.time_f?  a.second.time_f > b.second.time_f : a.first < b.first;
-        };
-        sort(node_seq.begin(),node_seq.end(),cmp);
+        
+        //sort(node_seq.begin(),node_seq.end()); // no need to sort again.
         tool2.reOrderedDFS(node_seq);
         // now, generate scc
         // each pair's first stores the representative.
@@ -229,5 +178,3 @@ public:
                 scc_set.insert(pair<GNode*,vector<GNode*>>(representative,vector<GNode*>()));
         }
     }
-
-};

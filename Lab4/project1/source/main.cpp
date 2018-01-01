@@ -1,6 +1,26 @@
 #include <ctime>
 #include <array>
+#include <fstream>
+#include <cmath>
 #include "graph.cpp"
+using namespace std;
+void serializer(DirectedGraph &g)
+{
+    // output text in dot language
+    //15.03-15.42 sleep
+    ofstream fdot("graph");
+    fdot << "digraph G {" << endl;
+    for(auto&& point: g.pointlist)
+    {
+        auto edge = point.fedge;
+        while(edge != nullptr)
+        {
+            fdot << &point << " -> " << edge->pointee <<";" <<endl;
+            edge = edge->next;
+        }
+    } 
+}
+
 void add_random_edge(DirectedGraph &g, int scale)
 {
     srand(time(0));
@@ -29,10 +49,12 @@ void add_random_edge(DirectedGraph &g, int scale)
 int run(int scale)
 {
     DirectedGraph g;
-    int edgescale;
-    
+    int edgescale = log((double)scale);
+    for(int i = 0;i<scale;i++)
+        g.addNode();
     add_random_edge(g,edgescale);
-
+    serializer(g);
+    return 0;
 }
 
 int main()
