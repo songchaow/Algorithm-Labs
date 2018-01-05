@@ -64,12 +64,11 @@ class DirectedGraph;
             }
         }
     }
-    void DFSTool::reOrderedDFS(vector<pair<void*,DFSTool::DFSNodeRecord>>& node_seq) 
+    void DFSTool::reOrderedDFS(vector<GNode*>& node_list) 
     {
         // used to find the SSC
-        for(auto&& node_rec:node_seq)
+        for(auto&& gnode:node_list)
         {
-            auto gnode = (GNode*)node_rec.first;
             if(DFSResult[gnode].color == Color::WHITE)
             {
                 DFSResult[&gnode].p = &gnode; // the root
@@ -164,9 +163,11 @@ class DirectedGraph;
         DFSTool tool1 = DFSTool(*this);
         tool1.DFS();
         auto node_seq_tree = tool1.getDFSResult();
-        vector<pair<void*,DFSTool::DFSNodeRecord>> node_seq(node_seq_tree.begin(),node_seq_tree.end());
+        vector<pair<void*,DFSTool::DFSNodeRecord>> node_rec_list(node_seq_tree.begin(),node_seq_tree.end());
         auto trans_result = transpose();
         DirectedGraph gt = trans_result.first;
+        auto pointer_map = trans_result.second;
+        
         DFSTool tool2 = DFSTool(gt);
         
         auto cmp = [](pair<void*,DFSTool::DFSNodeRecord> const & a,pair<void*,DFSTool::DFSNodeRecord> const & b)
@@ -174,8 +175,12 @@ class DirectedGraph;
             return (a.second.time_f != b.second.time_f)?  a.second.time_f > b.second.time_f : false;
         };
 
-        sort(node_seq.begin(),node_seq.end(),cmp); 
-        tool2.reOrderedDFS(node_seq);
+        sort(node_rec_list.begin(),node_rec_list.end(),cmp);
+        // construct node list
+        vector<GNode*> node_list;
+        for(auto&& node : node_rec_list)
+            node_list.push_back(pointer_map[(GNode*)node.first]);
+        tool2.reOrderedDFS(node_list);
         // now, generate scc
         // each pair's first stores the representative.
         map<GNode*,vector<GNode*>> scc_set;

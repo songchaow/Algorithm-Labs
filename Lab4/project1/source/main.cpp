@@ -65,6 +65,13 @@ int run(int scale)
     add_random_edge(g,edgescale);
     serializer(g);
     system(("dot -Tpdf graph >> graph"+to_string(scale)+".pdf").c_str());
+    // test
+    auto trans_result = g.transpose();
+    auto gt = trans_result.first;
+    serializer(gt);
+    system(("dot -Tpdf graph >> graph"+to_string(scale)+".pdf").c_str());
+    // test end
+    g.find_scc();
     return 0;
 }
 

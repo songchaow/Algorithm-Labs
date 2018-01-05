@@ -1,5 +1,6 @@
 #include <vector>
 #include <map>
+#include <fstream>
 using namespace std;
 
 struct EdgeNode;
@@ -59,15 +60,14 @@ public:
     DFSState getDFSResult();
     void DFSVisit(GNode* node);
     void DFS();
-    void reOrderedDFS(vector<pair<void*,DFSTool::DFSNodeRecord>>& node_seq);
+    void reOrderedDFS(vector<GNode*>& node_list);
 
 };
 
 class DirectedGraph
 {
-
 public:
-    
+    //DirectedGraph(const DirectedGraph&) = default;
     vector<GNode> pointlist;
     GNode* addNode(void* meta = nullptr);
     void addEdge(GNode* pointer, GNode* pointee);
@@ -79,7 +79,7 @@ public:
     // {
     //     link(findSet(node1),findSet(node2));
     // }
-    DirectedGraph transpose();
+    pair<DirectedGraph,map<GNode*,GNode*>> transpose();
 
     void find_scc();
 
