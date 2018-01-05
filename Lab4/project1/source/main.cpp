@@ -16,10 +16,10 @@ void serializer(DirectedGraph &g)
     {
         auto edge = point.fedge;
         if(edge == nullptr)
-            fdot << "\"" << &point << "\"" << ";" << endl;
+            fdot << "\"" << point.id_no << "\"" << ";" << endl;
         while(edge != nullptr)
         {
-            fdot << "\"" << &point << "\"" << " -> " << "\"" << edge->pointee << "\"" <<";" <<endl;
+            fdot << "\"" << point.id_no << "\"" << " -> " << "\"" << edge->pointee->id_no << "\"" <<";" <<endl;
             edge = edge->next;
         }
     } 
@@ -64,12 +64,12 @@ int run(int scale)
         g.addNode();
     add_random_edge(g,edgescale);
     serializer(g);
-    system(("dot -Tpdf graph >> graph"+to_string(scale)+".pdf").c_str());
+    system(("dot -Tpdf graph >> graph"+to_string(scale)+"_origin"+".pdf").c_str());
     // test
     auto trans_result = g.transpose();
     auto gt = trans_result.first;
     serializer(gt);
-    system(("dot -Tpdf graph >> graph"+to_string(scale)+".pdf").c_str());
+    system(("dot -Tpdf graph >> graph"+to_string(scale)+"_transposed"+".pdf").c_str());
     // test end
     g.find_scc();
     return 0;

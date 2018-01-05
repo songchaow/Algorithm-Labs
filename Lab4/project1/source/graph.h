@@ -7,6 +7,7 @@ struct EdgeNode;
 
 typedef struct GraphNode
 {
+    int id_no;
     void* meta;
     EdgeNode* fedge;
     GraphNode* p; // used for root-tree
@@ -82,5 +83,6 @@ public:
     pair<DirectedGraph,map<GNode*,GNode*>> transpose();
 
     void find_scc();
-
+private:
+    int curr_index = 1;
 };

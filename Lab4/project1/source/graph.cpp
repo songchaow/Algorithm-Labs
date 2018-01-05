@@ -43,8 +43,11 @@ class DirectedGraph;
             DFSResult[node].time_d = time;
             for(auto edge = node->fedge;edge!=nullptr;edge = edge->next)
             {
-                DFSResult[edge->pointee].p = node;
-                DFSVisit(edge->pointee);
+                if(DFSResult[edge->pointee].color == Color::WHITE)
+                {
+                    DFSResult[edge->pointee].p = node;
+                    DFSVisit(edge->pointee);
+                }
             }
             time++;
             DFSResult[node].time_f = time;
@@ -71,7 +74,7 @@ class DirectedGraph;
         {
             if(DFSResult[gnode].color == Color::WHITE)
             {
-                DFSResult[&gnode].p = &gnode; // the root
+                DFSResult[gnode].p = gnode; // the root. The `gnode` here is different from the one in `DFS` !!
                 DFSVisit(gnode);
             }
         }
@@ -84,6 +87,7 @@ class DirectedGraph;
         node.meta = meta;
         node.fedge = nullptr; // it has no edges initially
         node.p = nullptr; // it doesn't belong to any sets initially
+        node.id_no = curr_index++;
         pointlist.push_back(node);
         return &pointlist[pointlist.size()-1];
     }
@@ -132,6 +136,7 @@ class DirectedGraph;
         for(auto&& point:pointlist)
         {
             auto newnode = gt.addNode(point.meta);
+            newnode->id_no = point.id_no;
         }
         for(int i = 0;i<pointlist.size();i++)
         {
@@ -183,7 +188,7 @@ class DirectedGraph;
         tool2.reOrderedDFS(node_list);
         // now, generate scc
         // each pair's first stores the representative.
-        map<GNode*,vector<GNode*>> scc_set;
+        map<GNode*,vector<int>> scc_set;
         auto dfs_result = tool2.getDFSResult();
         for(auto&& record: dfs_result)
         {
@@ -191,16 +196,20 @@ class DirectedGraph;
             auto representative = findSet(node,dfs_result);
             if(scc_set.find(representative) != scc_set.end())
             {
-                scc_set[representative].push_back(node);
+                scc_set[representative].push_back(node->id_no);
             }
             else
-                scc_set.insert(pair<GNode*,vector<GNode*>>(representative,vector<GNode*>()));
+            {
+                scc_set.insert(pair<GNode*,vector<int>>(representative,vector<int>(1,representative->id_no)));
+
+            }
         }
         int count = 1;
         for(auto&& p : scc_set)
         {
-            scc_output << "SCC SET " << count <<": "<< p.first;
+            scc_output << "SCC SET " << count <<": "<< p.first << endl;
             for(auto&& el : p.second)
                 scc_output << '\t' << el << endl;
+            count++;
         }
     }
