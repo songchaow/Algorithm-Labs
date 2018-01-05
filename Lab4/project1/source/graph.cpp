@@ -3,6 +3,8 @@
 #include <map>
 #include <set>
 #include <algorithm>
+#include <utility>
+
 #include "graph.h"
 using namespace std;
 
@@ -84,6 +86,7 @@ class DirectedGraph;
         node.fedge = nullptr; // it has no edges initially
         node.p = nullptr; // it doesn't belong to any sets initially
         pointlist.push_back(node);
+        return &pointlist[pointlist.size()-1];
     }
     void DirectedGraph::addEdge(GNode* pointer, GNode* pointee)
     {
@@ -121,7 +124,7 @@ class DirectedGraph;
     // {
     //     link(findSet(node1),findSet(node2));
     // }
-    DirectedGraph DirectedGraph::transpose()
+    pair<DirectedGraph,map<GNode*,GNode*>> DirectedGraph::transpose()
     {
         // a temporary map is required to convert old ptrs to new ones
         map<GNode*,GNode*> new_ptr;
@@ -130,11 +133,15 @@ class DirectedGraph;
         for(auto&& point:pointlist)
         {
             auto newnode = gt.addNode(point.meta);
-            new_ptr.insert(pair<GNode*,GNode*>(&point,newnode));
+        }
+        for(int i = 0;i<pointlist.size();i++)
+        {
+
+            new_ptr.insert(pair<GNode*,GNode*>(&pointlist[i],&gt.pointlist[i]));
         }
         for(auto&& point:pointlist)
         {
-            // `edge` is from old graph
+            // `edge` is from old graph, we will not meet an edge more than once!
             auto edge = point.fedge;
             while(edge)
             {
@@ -149,18 +156,25 @@ class DirectedGraph;
                 edge = edge->next;
             }
         }
-        return gt;
+        return pair<DirectedGraph,map<GNode*,GNode*>>(gt,new_ptr);
     }
     void DirectedGraph::find_scc()
     {
+        ofstream scc_output = ofstream("../output/output1.txt");
         DFSTool tool1 = DFSTool(*this);
         tool1.DFS();
         auto node_seq_tree = tool1.getDFSResult();
         vector<pair<void*,DFSTool::DFSNodeRecord>> node_seq(node_seq_tree.begin(),node_seq_tree.end());
-        DirectedGraph gt = transpose();
+        auto trans_result = transpose();
+        DirectedGraph gt = trans_result.first;
         DFSTool tool2 = DFSTool(gt);
         
-        //sort(node_seq.begin(),node_seq.end()); // no need to sort again.
+        auto cmp = [](pair<void*,DFSTool::DFSNodeRecord> const & a,pair<void*,DFSTool::DFSNodeRecord> const & b)
+        {
+            return (a.second.time_f != b.second.time_f)?  a.second.time_f > b.second.time_f : false;
+        };
+
+        sort(node_seq.begin(),node_seq.end(),cmp); 
         tool2.reOrderedDFS(node_seq);
         // now, generate scc
         // each pair's first stores the representative.
@@ -176,5 +190,12 @@ class DirectedGraph;
             }
             else
                 scc_set.insert(pair<GNode*,vector<GNode*>>(representative,vector<GNode*>()));
+        }
+        int count = 1;
+        for(auto&& p : scc_set)
+        {
+            scc_output << "SCC SET " << count <<": "<< p.first;
+            for(auto&& el : p.second)
+                scc_output << '\t' << el << endl;
         }
     }
