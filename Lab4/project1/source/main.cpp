@@ -4,7 +4,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <string>
-#include "graph.cpp"
+#include "graph.h"
 using namespace std;
 void serializer(DirectedGraph &g)
 {
