@@ -82,7 +82,7 @@ public:
     // }
     pair<DirectedGraph,map<GNode*,GNode*>> transpose();
 
-    void find_scc();
+    void find_scc(ofstream &scc_output);
 private:
     int curr_index = 1;
 };

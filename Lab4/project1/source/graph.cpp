@@ -4,6 +4,7 @@
 #include <set>
 #include <algorithm>
 #include <utility>
+#include <chrono>
 
 #include "graph.h"
 using namespace std;
@@ -70,14 +71,19 @@ class DirectedGraph;
     void DFSTool::reOrderedDFS(vector<GNode*>& node_list) 
     {
         // used to find the SSC
+        ofstream time_output = ofstream("../output/size"+to_string(g.pointlist.size())+"/time1.txt");
         for(auto&& gnode:node_list)
         {
             if(DFSResult[gnode].color == Color::WHITE)
             {
+                auto start = chrono::high_resolution_clock::now();
                 DFSResult[gnode].p = gnode; // the root. The `gnode` here is different from the one in `DFS` !!
                 DFSVisit(gnode);
+                auto stop = chrono::high_resolution_clock::now();
+                time_output << "Time of component " << gnode->id_no <<" : " << (stop-start).count() << endl;
             }
         }
+        time_output.close();
     }
 
 
@@ -162,9 +168,8 @@ class DirectedGraph;
         }
         return pair<DirectedGraph,map<GNode*,GNode*>>(gt,new_ptr);
     }
-    void DirectedGraph::find_scc()
+    void DirectedGraph::find_scc(ofstream &scc_output)
     {
-        ofstream scc_output = ofstream("../output/output1.txt");
         DFSTool tool1 = DFSTool(*this);
         tool1.DFS();
         auto node_seq_tree = tool1.getDFSResult();
