@@ -26,15 +26,15 @@ void serializer(DirectedGraph &g)
     fdot << "}" <<endl;
 }
 
-void add_random_edge(DirectedGraph &g, int scale)
+void add_random_edge(DirectedGraph &g, int scale, int nodescale)
 {
     // see if there's a input file, if not, generate one.
-    auto random_input = ifstream("../input/size"+to_string(scale)+"/input.txt");
+    auto random_input = ifstream("../input/size"+to_string(nodescale)+"/input.txt");
     ofstream random_output;
-    if(!random_input.good())
+    if(!random_input)
     {
         random_input.close();
-        random_output = ofstream("../input/size"+to_string(scale)+"/input.txt");
+        random_output = ofstream("../input/size"+to_string(nodescale)+"/input.txt");
     }
     srand(time(0));
     // generate `scale` edges at random.
@@ -59,12 +59,12 @@ void add_random_edge(DirectedGraph &g, int scale)
             edge = edge->next;
         }
         if(continue_flag) continue; // try again, without increasing `edge_added`
-        if(!random_input.good())
+        if(!random_input)
             random_output << g.pointlist[node_index].id_no << "," << g.pointlist[pointee_index].id_no << endl;
         g.addEdge(&g.pointlist[node_index],&g.pointlist[pointee_index]);
         edge_added++;
     }
-    if(!random_input.good())
+    if(!random_input)
     for(int i =0 ;i < 500; i++)
         random_output << rand()%nodenum << "," << rand()%nodenum << endl;
     random_output.close();
@@ -77,7 +77,7 @@ int run(int scale, ofstream &scc_output)
     int edgescale = scale*log((double)scale);
     for(int i = 0;i<scale;i++)
         g.addNode();
-    add_random_edge(g,edgescale);
+    add_random_edge(g,edgescale,scale);
     serializer(g);
     if(scale < 100)
     system(("dot -Tpdf graph >> graph"+to_string(scale)+"_origin"+".pdf").c_str());
