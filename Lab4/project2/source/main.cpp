@@ -1,6 +1,7 @@
 #include <ctime>
 #include <array>
 #include <cmath>
+#include <chrono>
 
 #include "graph.h"
 
@@ -102,8 +103,13 @@ int run(int scale)
         add_random_edge(g,edgescale,scale);
     }
     serializer(g);
-    system(("dot -Tpdf graph-project2 >> graph"+to_string(scale)+"_origin"+".pdf").c_str());
+    auto start = chrono::high_resolution_clock::now();
     tool.johnson();
+    auto stop = chrono::high_resolution_clock::now();
+    ofstream time_output = ofstream("../output/size"+to_string(scale)+"/time2.txt");
+    time_output << "Time consumed: " << (stop-start).count() << "ns";
+    time_output.close();
+    system(("dot -Tpdf graph-project2 >> graph"+to_string(scale)+"_origin"+".pdf").c_str());
 }
 
 int main()

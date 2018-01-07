@@ -191,6 +191,7 @@ void ShortestPathTool::johnson()
             edge = edge->next;
         }
     }
+    auto record_backup = record_map;
     cleanRecord();
     // execute Dijkstra
     for(auto&& node: g.pointlist)
@@ -200,6 +201,7 @@ void ShortestPathTool::johnson()
         // output sequences
         for(auto&& term : g.pointlist)
         {
+            int length = 0;
             if(&term == &node)
                 continue;
             auto point = &term;
@@ -211,6 +213,7 @@ void ShortestPathTool::johnson()
             }
             else
             {
+                length = record_map[point].distance + record_backup[point].distance - record_backup[&node].distance;
                 path_output << point->id_no;
                 point = record_map[point].p;
             }
@@ -221,6 +224,8 @@ void ShortestPathTool::johnson()
                 if(point == parent) break;
                 else point = parent;
             }
+            // print path length
+            path_output << endl << "\t\t Length: " << length;
             path_output << endl;
         }
         cleanRecord();
