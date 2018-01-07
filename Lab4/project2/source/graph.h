@@ -1,6 +1,9 @@
 #include <map>
+#include <list>
 
 #include "../../project1/source/graph.h"
+
+struct WGNode;
 
 struct WENode : ENode
 {
@@ -18,9 +21,10 @@ struct WGNode : GNode
 class WeightedDirectedGraph : public DirectedGraph
 {
 public:
-    vector<WGNode> pointlist;
+    list<WGNode> pointlist;
     WGNode* addNode(void* meta = nullptr);
     void addEdge(WGNode* pointer, WGNode* pointee, int weight); // reimplementation
+    void clearEdge();
 };
 
 class ShortestPathTool

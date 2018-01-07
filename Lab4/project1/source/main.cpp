@@ -10,7 +10,7 @@ void serializer(DirectedGraph &g)
 {
     // output text in dot language
     //15.03-15.42 sleep
-    ofstream fdot("graph");
+    ofstream fdot("graph-project1");
     fdot << "digraph G {" << endl;
     for(auto&& point: g.pointlist)
     {

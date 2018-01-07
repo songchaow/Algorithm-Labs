@@ -14,7 +14,7 @@ WGNode* WeightedDirectedGraph::addNode(void* meta)
     node.p = nullptr; // it doesn't belong to any sets initially
     node.id_no = curr_index++;
     pointlist.push_back(node);
-    return &pointlist[pointlist.size()-1];
+    return &(pointlist.back());
 }
 
 void WeightedDirectedGraph::addEdge(WGNode* pointer, WGNode* pointee, int weight)
@@ -27,14 +27,31 @@ void WeightedDirectedGraph::addEdge(WGNode* pointer, WGNode* pointee, int weight
     pointer->fedge = fEdge;
 }
 
+void WeightedDirectedGraph::clearEdge()
+{
+    for(auto&& node : pointlist)
+        node.fedge = nullptr;
+    // memory leak happens here.
+}
+
 WGNode* ShortestPathTool::addVirtualNode()
 {
+    auto first = &*(g.pointlist.begin());
+
     auto s = g.addNode();
-    ShortestPathData entry;
-    entry.distance = 0;
-    entry.p = nullptr;
-    record_map[s] = entry;
-    for(auto it = g.pointlist.begin();it != g.pointlist.end()-1; it++)
+    auto second = &*(g.pointlist.begin());    
+    record_map.clear();
+    for(auto&& node : g.pointlist)
+    {
+        ShortestPathData entry;
+        entry.distance = 0;
+        entry.p = nullptr;
+        entry.reachable = false;
+        record_map[&node] = entry;
+    }
+    auto last = g.pointlist.end();
+    last--;
+    for(auto it = g.pointlist.begin();it != last; it++)
     // we skip the last element, i.e., s.
         g.addEdge(s,&*it,0);
     return s;
@@ -75,6 +92,7 @@ bool ShortestPathTool::BellmanFord(WGNode* start)
                 }
                 else if(record_map[&point].distance + edge->weight < record_map[edge->pointee].distance)
                     record_map[edge->pointee].distance = record_map[&point].distance + edge->weight;
+                edge = edge->next;
             }
         }
     }
@@ -90,6 +108,7 @@ bool ShortestPathTool::BellmanFord(WGNode* start)
                 err_flag = true;
             else if(record_map[&point].distance + edge->weight < record_map[edge->pointee].distance)
                 {err_flag = true; break;}
+            edge = edge->next;
         }
         if(err_flag) break;
     }
@@ -108,7 +127,7 @@ void ShortestPathTool::cleanRecord()
 
 bool ShortestPathTool::hascircus()
 {
-    bool result = BellmanFord(&g.pointlist[0]);
+    bool result = BellmanFord(&(g.pointlist.front()));
     cleanRecord();
     return result;
 }
@@ -117,7 +136,9 @@ void ShortestPathTool::Dijkstra(WGNode* start)
 {
     // record must be cleaned before called!
     record_map[start].reachable = true;
-    set<WGNode*> node_list = set<WGNode*>(g.pointlist.begin(),g.pointlist.end());
+    set<WGNode*> node_list;
+    for(auto&& point : g.pointlist)
+        node_list.insert(&point);
     // first, find out the min distance
     while(!node_list.empty())
     {
@@ -129,22 +150,26 @@ void ShortestPathTool::Dijkstra(WGNode* start)
             if(record_map[node].reachable && record_map[node].distance < record_map[min_node].distance)
                 min_node = node;
         }
-        auto edge = min_node->fedge;
-        while(edge)
+        if(record_map[min_node].reachable)
         {
-            if(!record_map[edge->pointee].reachable)
+            auto edge = min_node->fedge;
+            while(edge)
             {
-                record_map[edge->pointee].distance = record_map[min_node].distance + edge->weight;
-                record_map[edge->pointee].reachable = true;
-                record_map[edge->pointee].p = min_node;
+                if(!record_map[edge->pointee].reachable)
+                {
+                    record_map[edge->pointee].distance = record_map[min_node].distance + edge->weight;
+                    record_map[edge->pointee].reachable = true;
+                    record_map[edge->pointee].p = min_node;
+                }
+                else if(record_map[min_node].distance + edge->weight < record_map[edge->pointee].distance)
+                {
+                    record_map[edge->pointee].distance = record_map[min_node].distance + edge->weight;
+                    record_map[edge->pointee].p = min_node;
+                }
+                edge = edge->next;
             }
-            else if(record_map[min_node].distance + edge->weight < record_map[edge->pointee].distance)
-            {
-                record_map[edge->pointee].distance = record_map[min_node].distance + edge->weight;
-                record_map[edge->pointee].p = min_node;
-            }
-            edge = edge->next;
         }
+        
         node_list.erase(min_node);
     }
 }
@@ -179,10 +204,22 @@ void ShortestPathTool::johnson()
                 continue;
             auto point = &term;
             path_output << '\t' << "node " << point->id_no << " : ";
+            if(record_map[point].p == nullptr)
+            {
+                path_output << "No route to this point!" << endl;
+                continue;
+            }
+            else
+            {
+                path_output << point->id_no;
+                point = record_map[point].p;
+            }
             while(point)
             {
-                path_output << point->id_no << "<- ";
-                point = record_map[point].p;
+                path_output << "<- " << point->id_no;
+                auto parent = record_map[point].p;
+                if(point == parent) break;
+                else point = parent;
             }
             path_output << endl;
         }
