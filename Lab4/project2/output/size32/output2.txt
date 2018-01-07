@@ -1,0 +1,1954 @@
+Shortest path from node 1
+	node 2 : 2<- 15<- 8<- 30<- 1
+		 Length: 73
+	node 3 : 3<- 15<- 8<- 30<- 1
+		 Length: 52
+	node 4 : 4<- 11<- 21<- 30<- 1
+		 Length: 58
+	node 5 : 5<- 14<- 16<- 21<- 30<- 1
+		 Length: 75
+	node 6 : 6<- 12<- 30<- 1
+		 Length: 54
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 1
+		 Length: 36
+	node 9 : 9<- 13<- 25<- 12<- 30<- 1
+		 Length: 68
+	node 10 : No route to this point!
+	node 11 : 11<- 21<- 30<- 1
+		 Length: 52
+	node 12 : 12<- 30<- 1
+		 Length: 53
+	node 13 : 13<- 25<- 12<- 30<- 1
+		 Length: 61
+	node 14 : 14<- 16<- 21<- 30<- 1
+		 Length: 61
+	node 15 : 15<- 8<- 30<- 1
+		 Length: 54
+	node 16 : 16<- 21<- 30<- 1
+		 Length: 54
+	node 17 : 17<- 22<- 27<- 25<- 12<- 30<- 1
+		 Length: 75
+	node 18 : 18<- 11<- 21<- 30<- 1
+		 Length: 73
+	node 19 : 19<- 20<- 6<- 12<- 30<- 1
+		 Length: 64
+	node 20 : 20<- 6<- 12<- 30<- 1
+		 Length: 62
+	node 21 : 21<- 30<- 1
+		 Length: 36
+	node 22 : 22<- 27<- 25<- 12<- 30<- 1
+		 Length: 66
+	node 23 : 23<- 8<- 30<- 1
+		 Length: 58
+	node 24 : 24<- 17<- 22<- 27<- 25<- 12<- 30<- 1
+		 Length: 74
+	node 25 : 25<- 12<- 30<- 1
+		 Length: 60
+	node 26 : 26<- 15<- 8<- 30<- 1
+		 Length: 52
+	node 27 : 27<- 25<- 12<- 30<- 1
+		 Length: 66
+	node 28 : 28<- 6<- 12<- 30<- 1
+		 Length: 72
+	node 29 : 29<- 2<- 15<- 8<- 30<- 1
+		 Length: 101
+	node 30 : 30<- 1
+		 Length: 31
+	node 31 : 31<- 2<- 15<- 8<- 30<- 1
+		 Length: 83
+	node 32 : 32<- 8<- 30<- 1
+		 Length: 58
+Shortest path from node 2
+	node 1 : 1<- 9<- 31<- 2
+		 Length: 48
+	node 3 : 3<- 15<- 8<- 2
+		 Length: 43
+	node 4 : 4<- 11<- 26<- 15<- 8<- 2
+		 Length: 61
+	node 5 : 5<- 14<- 16<- 15<- 8<- 2
+		 Length: 82
+	node 6 : 6<- 12<- 22<- 32<- 2
+		 Length: 55
+	node 7 : No route to this point!
+	node 8 : 8<- 2
+		 Length: 27
+	node 9 : 9<- 31<- 2
+		 Length: 27
+	node 10 : No route to this point!
+	node 11 : 11<- 26<- 15<- 8<- 2
+		 Length: 55
+	node 12 : 12<- 22<- 32<- 2
+		 Length: 54
+	node 13 : 13<- 25<- 17<- 22<- 32<- 2
+		 Length: 56
+	node 14 : 14<- 16<- 15<- 8<- 2
+		 Length: 68
+	node 15 : 15<- 8<- 2
+		 Length: 45
+	node 16 : 16<- 15<- 8<- 2
+		 Length: 61
+	node 17 : 17<- 22<- 32<- 2
+		 Length: 51
+	node 18 : 18<- 24<- 29<- 2
+		 Length: 68
+	node 19 : 19<- 20<- 9<- 31<- 2
+		 Length: 58
+	node 20 : 20<- 9<- 31<- 2
+		 Length: 56
+	node 21 : 21<- 30<- 19<- 20<- 9<- 31<- 2
+		 Length: 63
+	node 22 : 22<- 32<- 2
+		 Length: 42
+	node 23 : 23<- 8<- 2
+		 Length: 49
+	node 24 : 24<- 29<- 2
+		 Length: 40
+	node 25 : 25<- 17<- 22<- 32<- 2
+		 Length: 55
+	node 26 : 26<- 15<- 8<- 2
+		 Length: 43
+	node 27 : 27<- 25<- 17<- 22<- 32<- 2
+		 Length: 61
+	node 28 : 28<- 6<- 12<- 22<- 32<- 2
+		 Length: 73
+	node 29 : 29<- 2
+		 Length: 28
+	node 30 : 30<- 19<- 20<- 9<- 31<- 2
+		 Length: 58
+	node 31 : 31<- 2
+		 Length: 10
+	node 32 : 32<- 2
+		 Length: 17
+Shortest path from node 3
+	node 1 : 1<- 25<- 3
+		 Length: 39
+	node 2 : 2<- 11<- 26<- 3
+		 Length: 42
+	node 4 : 4<- 11<- 26<- 3
+		 Length: 19
+	node 5 : 5<- 14<- 16<- 4<- 11<- 26<- 3
+		 Length: 42
+	node 6 : 6<- 4<- 11<- 26<- 3
+		 Length: 37
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 19<- 20<- 6<- 4<- 11<- 26<- 3
+		 Length: 52
+	node 9 : 9<- 13<- 26<- 3
+		 Length: 30
+	node 10 : No route to this point!
+	node 11 : 11<- 26<- 3
+		 Length: 13
+	node 12 : 12<- 22<- 27<- 25<- 3
+		 Length: 48
+	node 13 : 13<- 26<- 3
+		 Length: 23
+	node 14 : 14<- 16<- 4<- 11<- 26<- 3
+		 Length: 28
+	node 15 : 15<- 8<- 30<- 19<- 20<- 6<- 4<- 11<- 26<- 3
+		 Length: 70
+	node 16 : 16<- 4<- 11<- 26<- 3
+		 Length: 21
+	node 17 : 17<- 22<- 27<- 25<- 3
+		 Length: 45
+	node 18 : 18<- 11<- 26<- 3
+		 Length: 34
+	node 19 : 19<- 20<- 6<- 4<- 11<- 26<- 3
+		 Length: 47
+	node 20 : 20<- 6<- 4<- 11<- 26<- 3
+		 Length: 45
+	node 21 : 21<- 26<- 3
+		 Length: 25
+	node 22 : 22<- 27<- 25<- 3
+		 Length: 36
+	node 23 : 23<- 4<- 11<- 26<- 3
+		 Length: 45
+	node 24 : 24<- 17<- 22<- 27<- 25<- 3
+		 Length: 44
+	node 25 : 25<- 3
+		 Length: 30
+	node 26 : 26<- 3
+		 Length: 1
+	node 27 : 27<- 25<- 3
+		 Length: 36
+	node 28 : 28<- 5<- 14<- 16<- 4<- 11<- 26<- 3
+		 Length: 45
+	node 29 : 29<- 2<- 11<- 26<- 3
+		 Length: 70
+	node 30 : 30<- 19<- 20<- 6<- 4<- 11<- 26<- 3
+		 Length: 47
+	node 31 : 31<- 2<- 11<- 26<- 3
+		 Length: 52
+	node 32 : 32<- 18<- 11<- 26<- 3
+		 Length: 50
+Shortest path from node 4
+	node 1 : 1<- 25<- 20<- 6<- 4
+		 Length: 35
+	node 2 : 2<- 11<- 21<- 13<- 4
+		 Length: 68
+	node 3 : 3<- 28<- 5<- 14<- 16<- 4
+		 Length: 47
+	node 5 : 5<- 14<- 16<- 4
+		 Length: 23
+	node 6 : 6<- 4
+		 Length: 18
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 19<- 20<- 6<- 4
+		 Length: 33
+	node 9 : 9<- 13<- 4
+		 Length: 17
+	node 10 : No route to this point!
+	node 11 : 11<- 21<- 13<- 4
+		 Length: 39
+	node 12 : 12<- 22<- 14<- 16<- 4
+		 Length: 33
+	node 13 : 13<- 4
+		 Length: 10
+	node 14 : 14<- 16<- 4
+		 Length: 9
+	node 15 : 15<- 8<- 30<- 19<- 20<- 6<- 4
+		 Length: 51
+	node 16 : 16<- 4
+		 Length: 2
+	node 17 : 17<- 22<- 14<- 16<- 4
+		 Length: 30
+	node 18 : 18<- 24<- 17<- 22<- 14<- 16<- 4
+		 Length: 57
+	node 19 : 19<- 20<- 6<- 4
+		 Length: 28
+	node 20 : 20<- 6<- 4
+		 Length: 26
+	node 21 : 21<- 13<- 4
+		 Length: 23
+	node 22 : 22<- 14<- 16<- 4
+		 Length: 21
+	node 23 : 23<- 4
+		 Length: 26
+	node 24 : 24<- 17<- 22<- 14<- 16<- 4
+		 Length: 29
+	node 25 : 25<- 20<- 6<- 4
+		 Length: 26
+	node 26 : 26<- 25<- 20<- 6<- 4
+		 Length: 28
+	node 27 : 27<- 25<- 20<- 6<- 4
+		 Length: 32
+	node 28 : 28<- 5<- 14<- 16<- 4
+		 Length: 26
+	node 29 : 29<- 2<- 11<- 21<- 13<- 4
+		 Length: 96
+	node 30 : 30<- 19<- 20<- 6<- 4
+		 Length: 28
+	node 31 : 31<- 20<- 6<- 4
+		 Length: 57
+	node 32 : 32<- 8<- 30<- 19<- 20<- 6<- 4
+		 Length: 55
+Shortest path from node 5
+	node 1 : 1<- 25<- 20<- 28<- 5
+		 Length: 13
+	node 2 : 2<- 11<- 26<- 25<- 20<- 28<- 5
+		 Length: 47
+	node 3 : 3<- 28<- 5
+		 Length: 24
+	node 4 : 4<- 11<- 26<- 25<- 20<- 28<- 5
+		 Length: 24
+	node 6 : 6<- 12<- 22<- 27<- 25<- 20<- 28<- 5
+		 Length: 23
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 28<- 5
+		 Length: 11
+	node 9 : 9<- 13<- 25<- 20<- 28<- 5
+		 Length: 12
+	node 10 : No route to this point!
+	node 11 : 11<- 26<- 25<- 20<- 28<- 5
+		 Length: 18
+	node 12 : 12<- 22<- 27<- 25<- 20<- 28<- 5
+		 Length: 22
+	node 13 : 13<- 25<- 20<- 28<- 5
+		 Length: 5
+	node 14 : 14<- 16<- 4<- 11<- 26<- 25<- 20<- 28<- 5
+		 Length: 33
+	node 15 : 15<- 8<- 30<- 28<- 5
+		 Length: 29
+	node 16 : 16<- 4<- 11<- 26<- 25<- 20<- 28<- 5
+		 Length: 26
+	node 17 : 17<- 22<- 27<- 25<- 20<- 28<- 5
+		 Length: 19
+	node 18 : 18<- 11<- 26<- 25<- 20<- 28<- 5
+		 Length: 39
+	node 19 : 19<- 20<- 28<- 5
+		 Length: 6
+	node 20 : 20<- 28<- 5
+		 Length: 4
+	node 21 : 21<- 30<- 28<- 5
+		 Length: 11
+	node 22 : 22<- 27<- 25<- 20<- 28<- 5
+		 Length: 10
+	node 23 : 23<- 24<- 17<- 22<- 27<- 25<- 20<- 28<- 5
+		 Length: 27
+	node 24 : 24<- 17<- 22<- 27<- 25<- 20<- 28<- 5
+		 Length: 18
+	node 25 : 25<- 20<- 28<- 5
+		 Length: 4
+	node 26 : 26<- 25<- 20<- 28<- 5
+		 Length: 6
+	node 27 : 27<- 25<- 20<- 28<- 5
+		 Length: 10
+	node 28 : 28<- 5
+		 Length: 3
+	node 29 : 29<- 2<- 11<- 26<- 25<- 20<- 28<- 5
+		 Length: 75
+	node 30 : 30<- 28<- 5
+		 Length: 6
+	node 31 : 31<- 20<- 28<- 5
+		 Length: 35
+	node 32 : 32<- 8<- 30<- 28<- 5
+		 Length: 33
+Shortest path from node 6
+	node 1 : 1<- 25<- 20<- 6
+		 Length: 17
+	node 2 : 2<- 11<- 26<- 25<- 20<- 6
+		 Length: 51
+	node 3 : 3<- 15<- 8<- 30<- 19<- 20<- 6
+		 Length: 31
+	node 4 : 4<- 6
+		 Length: 18
+	node 5 : 5<- 20<- 6
+		 Length: 38
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 19<- 20<- 6
+		 Length: 15
+	node 9 : 9<- 13<- 25<- 20<- 6
+		 Length: 16
+	node 10 : No route to this point!
+	node 11 : 11<- 26<- 25<- 20<- 6
+		 Length: 22
+	node 12 : 12<- 22<- 27<- 25<- 20<- 6
+		 Length: 26
+	node 13 : 13<- 25<- 20<- 6
+		 Length: 9
+	node 14 : 14<- 16<- 4<- 6
+		 Length: 27
+	node 15 : 15<- 8<- 30<- 19<- 20<- 6
+		 Length: 33
+	node 16 : 16<- 4<- 6
+		 Length: 20
+	node 17 : 17<- 22<- 27<- 25<- 20<- 6
+		 Length: 23
+	node 18 : 18<- 11<- 26<- 25<- 20<- 6
+		 Length: 43
+	node 19 : 19<- 20<- 6
+		 Length: 10
+	node 20 : 20<- 6
+		 Length: 8
+	node 21 : 21<- 30<- 19<- 20<- 6
+		 Length: 15
+	node 22 : 22<- 27<- 25<- 20<- 6
+		 Length: 14
+	node 23 : 23<- 24<- 17<- 22<- 27<- 25<- 20<- 6
+		 Length: 31
+	node 24 : 24<- 17<- 22<- 27<- 25<- 20<- 6
+		 Length: 22
+	node 25 : 25<- 20<- 6
+		 Length: 8
+	node 26 : 26<- 25<- 20<- 6
+		 Length: 10
+	node 27 : 27<- 25<- 20<- 6
+		 Length: 14
+	node 28 : 28<- 6
+		 Length: 18
+	node 29 : 29<- 2<- 11<- 26<- 25<- 20<- 6
+		 Length: 79
+	node 30 : 30<- 19<- 20<- 6
+		 Length: 10
+	node 31 : 31<- 20<- 6
+		 Length: 39
+	node 32 : 32<- 8<- 30<- 19<- 20<- 6
+		 Length: 37
+Shortest path from node 7
+	node 1 : 1<- 25<- 17<- 22<- 7
+		 Length: 28
+	node 2 : 2<- 11<- 7
+		 Length: 46
+	node 3 : 3<- 15<- 8<- 7
+		 Length: 26
+	node 4 : 4<- 11<- 7
+		 Length: 23
+	node 5 : 5<- 7
+		 Length: 25
+	node 6 : 6<- 12<- 22<- 7
+		 Length: 19
+	node 8 : 8<- 7
+		 Length: 10
+	node 9 : 9<- 13<- 25<- 17<- 22<- 7
+		 Length: 27
+	node 10 : No route to this point!
+	node 11 : 11<- 7
+		 Length: 17
+	node 12 : 12<- 22<- 7
+		 Length: 18
+	node 13 : 13<- 25<- 17<- 22<- 7
+		 Length: 20
+	node 14 : 14<- 16<- 4<- 11<- 7
+		 Length: 32
+	node 15 : 15<- 8<- 7
+		 Length: 28
+	node 16 : 16<- 4<- 11<- 7
+		 Length: 25
+	node 17 : 17<- 22<- 7
+		 Length: 15
+	node 18 : 18<- 11<- 7
+		 Length: 38
+	node 19 : 19<- 7
+		 Length: 27
+	node 20 : 20<- 6<- 12<- 22<- 7
+		 Length: 27
+	node 21 : 21<- 30<- 19<- 7
+		 Length: 32
+	node 22 : 22<- 7
+		 Length: 6
+	node 23 : 23<- 7
+		 Length: 16
+	node 24 : 24<- 17<- 22<- 7
+		 Length: 14
+	node 25 : 25<- 17<- 22<- 7
+		 Length: 19
+	node 26 : 26<- 17<- 22<- 7
+		 Length: 17
+	node 27 : 27<- 25<- 17<- 22<- 7
+		 Length: 25
+	node 28 : 28<- 5<- 7
+		 Length: 28
+	node 29 : 29<- 2<- 11<- 7
+		 Length: 74
+	node 30 : 30<- 19<- 7
+		 Length: 27
+	node 31 : 31<- 2<- 11<- 7
+		 Length: 56
+	node 32 : 32<- 8<- 7
+		 Length: 32
+Shortest path from node 8
+	node 1 : 1<- 25<- 20<- 15<- 8
+		 Length: 43
+	node 2 : 2<- 15<- 8
+		 Length: 37
+	node 3 : 3<- 15<- 8
+		 Length: 16
+	node 4 : 4<- 11<- 26<- 15<- 8
+		 Length: 34
+	node 5 : 5<- 14<- 16<- 15<- 8
+		 Length: 55
+	node 6 : 6<- 4<- 11<- 26<- 15<- 8
+		 Length: 52
+	node 7 : No route to this point!
+	node 9 : 9<- 13<- 25<- 20<- 15<- 8
+		 Length: 42
+	node 10 : No route to this point!
+	node 11 : 11<- 26<- 15<- 8
+		 Length: 28
+	node 12 : 12<- 22<- 27<- 25<- 20<- 15<- 8
+		 Length: 52
+	node 13 : 13<- 25<- 20<- 15<- 8
+		 Length: 35
+	node 14 : 14<- 16<- 15<- 8
+		 Length: 41
+	node 15 : 15<- 8
+		 Length: 18
+	node 16 : 16<- 15<- 8
+		 Length: 34
+	node 17 : 17<- 22<- 27<- 25<- 20<- 15<- 8
+		 Length: 49
+	node 18 : 18<- 11<- 26<- 15<- 8
+		 Length: 49
+	node 19 : 19<- 20<- 15<- 8
+		 Length: 36
+	node 20 : 20<- 15<- 8
+		 Length: 34
+	node 21 : 21<- 26<- 15<- 8
+		 Length: 40
+	node 22 : 22<- 27<- 25<- 20<- 15<- 8
+		 Length: 40
+	node 23 : 23<- 8
+		 Length: 22
+	node 24 : 24<- 17<- 22<- 27<- 25<- 20<- 15<- 8
+		 Length: 48
+	node 25 : 25<- 20<- 15<- 8
+		 Length: 34
+	node 26 : 26<- 15<- 8
+		 Length: 16
+	node 27 : 27<- 25<- 20<- 15<- 8
+		 Length: 40
+	node 28 : 28<- 5<- 14<- 16<- 15<- 8
+		 Length: 58
+	node 29 : 29<- 2<- 15<- 8
+		 Length: 65
+	node 30 : 30<- 19<- 20<- 15<- 8
+		 Length: 36
+	node 31 : 31<- 2<- 15<- 8
+		 Length: 47
+	node 32 : 32<- 8
+		 Length: 22
+Shortest path from node 9
+	node 1 : 1<- 9
+		 Length: 21
+	node 2 : 2<- 11<- 9
+		 Length: 60
+	node 3 : 3<- 15<- 8<- 30<- 19<- 20<- 9
+		 Length: 52
+	node 4 : 4<- 11<- 9
+		 Length: 37
+	node 5 : 5<- 20<- 9
+		 Length: 59
+	node 6 : 6<- 12<- 22<- 27<- 25<- 20<- 9
+		 Length: 48
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 19<- 20<- 9
+		 Length: 36
+	node 10 : No route to this point!
+	node 11 : 11<- 9
+		 Length: 31
+	node 12 : 12<- 22<- 27<- 25<- 20<- 9
+		 Length: 47
+	node 13 : 13<- 25<- 20<- 9
+		 Length: 30
+	node 14 : 14<- 16<- 4<- 11<- 9
+		 Length: 46
+	node 15 : 15<- 8<- 30<- 19<- 20<- 9
+		 Length: 54
+	node 16 : 16<- 4<- 11<- 9
+		 Length: 39
+	node 17 : 17<- 22<- 27<- 25<- 20<- 9
+		 Length: 44
+	node 18 : 18<- 11<- 9
+		 Length: 52
+	node 19 : 19<- 20<- 9
+		 Length: 31
+	node 20 : 20<- 9
+		 Length: 29
+	node 21 : 21<- 30<- 19<- 20<- 9
+		 Length: 36
+	node 22 : 22<- 27<- 25<- 20<- 9
+		 Length: 35
+	node 23 : 23<- 24<- 17<- 22<- 27<- 25<- 20<- 9
+		 Length: 52
+	node 24 : 24<- 17<- 22<- 27<- 25<- 20<- 9
+		 Length: 43
+	node 25 : 25<- 20<- 9
+		 Length: 29
+	node 26 : 26<- 25<- 20<- 9
+		 Length: 31
+	node 27 : 27<- 25<- 20<- 9
+		 Length: 35
+	node 28 : 28<- 5<- 20<- 9
+		 Length: 62
+	node 29 : 29<- 2<- 11<- 9
+		 Length: 88
+	node 30 : 30<- 19<- 20<- 9
+		 Length: 31
+	node 31 : 31<- 20<- 9
+		 Length: 60
+	node 32 : 32<- 8<- 30<- 19<- 20<- 9
+		 Length: 58
+Shortest path from node 10
+	node 1 : 1<- 25<- 20<- 28<- 10
+		 Length: 27
+	node 2 : 2<- 15<- 8<- 30<- 19<- 10
+		 Length: 45
+	node 3 : 3<- 15<- 8<- 30<- 19<- 10
+		 Length: 24
+	node 4 : 4<- 11<- 21<- 30<- 19<- 10
+		 Length: 30
+	node 5 : 5<- 14<- 16<- 21<- 30<- 19<- 10
+		 Length: 47
+	node 6 : 6<- 12<- 30<- 19<- 10
+		 Length: 26
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 19<- 10
+		 Length: 8
+	node 9 : 9<- 13<- 25<- 20<- 28<- 10
+		 Length: 26
+	node 11 : 11<- 21<- 30<- 19<- 10
+		 Length: 24
+	node 12 : 12<- 30<- 19<- 10
+		 Length: 25
+	node 13 : 13<- 25<- 20<- 28<- 10
+		 Length: 19
+	node 14 : 14<- 16<- 21<- 30<- 19<- 10
+		 Length: 33
+	node 15 : 15<- 8<- 30<- 19<- 10
+		 Length: 26
+	node 16 : 16<- 21<- 30<- 19<- 10
+		 Length: 26
+	node 17 : 17<- 22<- 27<- 25<- 20<- 28<- 10
+		 Length: 33
+	node 18 : 18<- 11<- 21<- 30<- 19<- 10
+		 Length: 45
+	node 19 : 19<- 10
+		 Length: 3
+	node 20 : 20<- 28<- 10
+		 Length: 18
+	node 21 : 21<- 30<- 19<- 10
+		 Length: 8
+	node 22 : 22<- 27<- 25<- 20<- 28<- 10
+		 Length: 24
+	node 23 : 23<- 8<- 30<- 19<- 10
+		 Length: 30
+	node 24 : 24<- 29<- 10
+		 Length: 31
+	node 25 : 25<- 20<- 28<- 10
+		 Length: 18
+	node 26 : 26<- 25<- 20<- 28<- 10
+		 Length: 20
+	node 27 : 27<- 25<- 20<- 28<- 10
+		 Length: 24
+	node 28 : 28<- 10
+		 Length: 17
+	node 29 : 29<- 10
+		 Length: 19
+	node 30 : 30<- 19<- 10
+		 Length: 3
+	node 31 : 31<- 29<- 10
+		 Length: 41
+	node 32 : 32<- 8<- 30<- 19<- 10
+		 Length: 30
+Shortest path from node 11
+	node 1 : 1<- 18<- 11
+		 Length: 41
+	node 2 : 2<- 11
+		 Length: 29
+	node 3 : 3<- 28<- 5<- 14<- 16<- 4<- 11
+		 Length: 53
+	node 4 : 4<- 11
+		 Length: 6
+	node 5 : 5<- 14<- 16<- 4<- 11
+		 Length: 29
+	node 6 : 6<- 4<- 11
+		 Length: 24
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 19<- 20<- 6<- 4<- 11
+		 Length: 39
+	node 9 : 9<- 13<- 4<- 11
+		 Length: 23
+	node 10 : No route to this point!
+	node 12 : 12<- 22<- 14<- 16<- 4<- 11
+		 Length: 39
+	node 13 : 13<- 4<- 11
+		 Length: 16
+	node 14 : 14<- 16<- 4<- 11
+		 Length: 15
+	node 15 : 15<- 8<- 30<- 19<- 20<- 6<- 4<- 11
+		 Length: 57
+	node 16 : 16<- 4<- 11
+		 Length: 8
+	node 17 : 17<- 22<- 14<- 16<- 4<- 11
+		 Length: 36
+	node 18 : 18<- 11
+		 Length: 21
+	node 19 : 19<- 20<- 6<- 4<- 11
+		 Length: 34
+	node 20 : 20<- 6<- 4<- 11
+		 Length: 32
+	node 21 : 21<- 13<- 4<- 11
+		 Length: 29
+	node 22 : 22<- 14<- 16<- 4<- 11
+		 Length: 27
+	node 23 : 23<- 4<- 11
+		 Length: 32
+	node 24 : 24<- 17<- 22<- 14<- 16<- 4<- 11
+		 Length: 35
+	node 25 : 25<- 20<- 6<- 4<- 11
+		 Length: 32
+	node 26 : 26<- 25<- 20<- 6<- 4<- 11
+		 Length: 34
+	node 27 : 27<- 25<- 20<- 6<- 4<- 11
+		 Length: 38
+	node 28 : 28<- 5<- 14<- 16<- 4<- 11
+		 Length: 32
+	node 29 : 29<- 2<- 11
+		 Length: 57
+	node 30 : 30<- 19<- 20<- 6<- 4<- 11
+		 Length: 34
+	node 31 : 31<- 2<- 11
+		 Length: 39
+	node 32 : 32<- 18<- 11
+		 Length: 37
+Shortest path from node 12
+	node 1 : 1<- 25<- 12
+		 Length: 16
+	node 2 : 2<- 11<- 26<- 25<- 12
+		 Length: 50
+	node 3 : 3<- 15<- 8<- 30<- 19<- 20<- 6<- 12
+		 Length: 32
+	node 4 : 4<- 6<- 12
+		 Length: 19
+	node 5 : 5<- 20<- 6<- 12
+		 Length: 39
+	node 6 : 6<- 12
+		 Length: 1
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 19<- 20<- 6<- 12
+		 Length: 16
+	node 9 : 9<- 13<- 25<- 12
+		 Length: 15
+	node 10 : No route to this point!
+	node 11 : 11<- 26<- 25<- 12
+		 Length: 21
+	node 13 : 13<- 25<- 12
+		 Length: 8
+	node 14 : 14<- 12
+		 Length: 26
+	node 15 : 15<- 8<- 30<- 19<- 20<- 6<- 12
+		 Length: 34
+	node 16 : 16<- 4<- 6<- 12
+		 Length: 21
+	node 17 : 17<- 22<- 27<- 25<- 12
+		 Length: 22
+	node 18 : 18<- 11<- 26<- 25<- 12
+		 Length: 42
+	node 19 : 19<- 20<- 6<- 12
+		 Length: 11
+	node 20 : 20<- 6<- 12
+		 Length: 9
+	node 21 : 21<- 30<- 19<- 20<- 6<- 12
+		 Length: 16
+	node 22 : 22<- 27<- 25<- 12
+		 Length: 13
+	node 23 : 23<- 24<- 17<- 22<- 27<- 25<- 12
+		 Length: 30
+	node 24 : 24<- 17<- 22<- 27<- 25<- 12
+		 Length: 21
+	node 25 : 25<- 12
+		 Length: 7
+	node 26 : 26<- 25<- 12
+		 Length: 9
+	node 27 : 27<- 25<- 12
+		 Length: 13
+	node 28 : 28<- 6<- 12
+		 Length: 19
+	node 29 : 29<- 2<- 11<- 26<- 25<- 12
+		 Length: 78
+	node 30 : 30<- 19<- 20<- 6<- 12
+		 Length: 11
+	node 31 : 31<- 20<- 6<- 12
+		 Length: 40
+	node 32 : 32<- 8<- 30<- 19<- 20<- 6<- 12
+		 Length: 38
+Shortest path from node 13
+	node 1 : 1<- 9<- 13
+		 Length: 28
+	node 2 : 2<- 11<- 21<- 13
+		 Length: 58
+	node 3 : 3<- 15<- 8<- 30<- 19<- 20<- 9<- 13
+		 Length: 59
+	node 4 : 4<- 11<- 21<- 13
+		 Length: 35
+	node 5 : 5<- 14<- 16<- 21<- 13
+		 Length: 52
+	node 6 : 6<- 4<- 11<- 21<- 13
+		 Length: 53
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 19<- 20<- 9<- 13
+		 Length: 43
+	node 9 : 9<- 13
+		 Length: 7
+	node 10 : No route to this point!
+	node 11 : 11<- 21<- 13
+		 Length: 29
+	node 12 : 12<- 22<- 27<- 25<- 20<- 9<- 13
+		 Length: 54
+	node 14 : 14<- 16<- 21<- 13
+		 Length: 38
+	node 15 : 15<- 8<- 30<- 19<- 20<- 9<- 13
+		 Length: 61
+	node 16 : 16<- 21<- 13
+		 Length: 31
+	node 17 : 17<- 22<- 27<- 25<- 20<- 9<- 13
+		 Length: 51
+	node 18 : 18<- 11<- 21<- 13
+		 Length: 50
+	node 19 : 19<- 20<- 9<- 13
+		 Length: 38
+	node 20 : 20<- 9<- 13
+		 Length: 36
+	node 21 : 21<- 13
+		 Length: 13
+	node 22 : 22<- 27<- 25<- 20<- 9<- 13
+		 Length: 42
+	node 23 : 23<- 24<- 17<- 22<- 27<- 25<- 20<- 9<- 13
+		 Length: 59
+	node 24 : 24<- 17<- 22<- 27<- 25<- 20<- 9<- 13
+		 Length: 50
+	node 25 : 25<- 20<- 9<- 13
+		 Length: 36
+	node 26 : 26<- 25<- 20<- 9<- 13
+		 Length: 38
+	node 27 : 27<- 25<- 20<- 9<- 13
+		 Length: 42
+	node 28 : 28<- 5<- 14<- 16<- 21<- 13
+		 Length: 55
+	node 29 : 29<- 2<- 11<- 21<- 13
+		 Length: 86
+	node 30 : 30<- 19<- 20<- 9<- 13
+		 Length: 38
+	node 31 : 31<- 20<- 9<- 13
+		 Length: 67
+	node 32 : 32<- 8<- 30<- 19<- 20<- 9<- 13
+		 Length: 65
+Shortest path from node 14
+	node 1 : 1<- 14
+		 Length: 27
+	node 2 : 2<- 11<- 26<- 25<- 20<- 28<- 5<- 14
+		 Length: 61
+	node 3 : 3<- 28<- 5<- 14
+		 Length: 38
+	node 4 : 4<- 11<- 26<- 25<- 20<- 28<- 5<- 14
+		 Length: 38
+	node 5 : 5<- 14
+		 Length: 14
+	node 6 : 6<- 12<- 22<- 14
+		 Length: 25
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 28<- 5<- 14
+		 Length: 25
+	node 9 : 9<- 13<- 14
+		 Length: 19
+	node 10 : No route to this point!
+	node 11 : 11<- 26<- 25<- 20<- 28<- 5<- 14
+		 Length: 32
+	node 12 : 12<- 22<- 14
+		 Length: 24
+	node 13 : 13<- 14
+		 Length: 12
+	node 15 : 15<- 8<- 30<- 28<- 5<- 14
+		 Length: 43
+	node 16 : 16<- 4<- 11<- 26<- 25<- 20<- 28<- 5<- 14
+		 Length: 40
+	node 17 : 17<- 22<- 14
+		 Length: 21
+	node 18 : 18<- 24<- 17<- 22<- 14
+		 Length: 48
+	node 19 : 19<- 20<- 28<- 5<- 14
+		 Length: 20
+	node 20 : 20<- 28<- 5<- 14
+		 Length: 18
+	node 21 : 21<- 13<- 14
+		 Length: 25
+	node 22 : 22<- 14
+		 Length: 12
+	node 23 : 23<- 24<- 17<- 22<- 14
+		 Length: 29
+	node 24 : 24<- 17<- 22<- 14
+		 Length: 20
+	node 25 : 25<- 20<- 28<- 5<- 14
+		 Length: 18
+	node 26 : 26<- 25<- 20<- 28<- 5<- 14
+		 Length: 20
+	node 27 : 27<- 25<- 20<- 28<- 5<- 14
+		 Length: 24
+	node 28 : 28<- 5<- 14
+		 Length: 17
+	node 29 : 29<- 2<- 11<- 26<- 25<- 20<- 28<- 5<- 14
+		 Length: 89
+	node 30 : 30<- 28<- 5<- 14
+		 Length: 20
+	node 31 : 31<- 20<- 28<- 5<- 14
+		 Length: 49
+	node 32 : 32<- 8<- 30<- 28<- 5<- 14
+		 Length: 47
+Shortest path from node 15
+	node 1 : 1<- 25<- 20<- 15
+		 Length: 25
+	node 2 : 2<- 15
+		 Length: 19
+	node 3 : 3<- 15
+		 Length: -2
+	node 4 : 4<- 11<- 26<- 15
+		 Length: 16
+	node 5 : 5<- 14<- 16<- 15
+		 Length: 37
+	node 6 : 6<- 4<- 11<- 26<- 15
+		 Length: 34
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 19<- 20<- 15
+		 Length: 23
+	node 9 : 9<- 13<- 25<- 20<- 15
+		 Length: 24
+	node 10 : No route to this point!
+	node 11 : 11<- 26<- 15
+		 Length: 10
+	node 12 : 12<- 22<- 27<- 25<- 20<- 15
+		 Length: 34
+	node 13 : 13<- 25<- 20<- 15
+		 Length: 17
+	node 14 : 14<- 16<- 15
+		 Length: 23
+	node 16 : 16<- 15
+		 Length: 16
+	node 17 : 17<- 22<- 27<- 25<- 20<- 15
+		 Length: 31
+	node 18 : 18<- 11<- 26<- 15
+		 Length: 31
+	node 19 : 19<- 20<- 15
+		 Length: 18
+	node 20 : 20<- 15
+		 Length: 16
+	node 21 : 21<- 26<- 15
+		 Length: 22
+	node 22 : 22<- 27<- 25<- 20<- 15
+		 Length: 22
+	node 23 : 23<- 24<- 17<- 22<- 27<- 25<- 20<- 15
+		 Length: 39
+	node 24 : 24<- 17<- 22<- 27<- 25<- 20<- 15
+		 Length: 30
+	node 25 : 25<- 20<- 15
+		 Length: 16
+	node 26 : 26<- 15
+		 Length: -2
+	node 27 : 27<- 25<- 20<- 15
+		 Length: 22
+	node 28 : 28<- 5<- 14<- 16<- 15
+		 Length: 40
+	node 29 : 29<- 2<- 15
+		 Length: 47
+	node 30 : 30<- 19<- 20<- 15
+		 Length: 18
+	node 31 : 31<- 2<- 15
+		 Length: 29
+	node 32 : 32<- 2<- 15
+		 Length: 36
+Shortest path from node 16
+	node 1 : 1<- 14<- 16
+		 Length: 34
+	node 2 : 2<- 11<- 26<- 25<- 20<- 28<- 5<- 14<- 16
+		 Length: 68
+	node 3 : 3<- 28<- 5<- 14<- 16
+		 Length: 45
+	node 4 : 4<- 11<- 26<- 25<- 20<- 28<- 5<- 14<- 16
+		 Length: 45
+	node 5 : 5<- 14<- 16
+		 Length: 21
+	node 6 : 6<- 12<- 22<- 14<- 16
+		 Length: 32
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 28<- 5<- 14<- 16
+		 Length: 32
+	node 9 : 9<- 13<- 14<- 16
+		 Length: 26
+	node 10 : No route to this point!
+	node 11 : 11<- 26<- 25<- 20<- 28<- 5<- 14<- 16
+		 Length: 39
+	node 12 : 12<- 22<- 14<- 16
+		 Length: 31
+	node 13 : 13<- 14<- 16
+		 Length: 19
+	node 14 : 14<- 16
+		 Length: 7
+	node 15 : 15<- 8<- 30<- 28<- 5<- 14<- 16
+		 Length: 50
+	node 17 : 17<- 22<- 14<- 16
+		 Length: 28
+	node 18 : 18<- 24<- 17<- 22<- 14<- 16
+		 Length: 55
+	node 19 : 19<- 20<- 28<- 5<- 14<- 16
+		 Length: 27
+	node 20 : 20<- 28<- 5<- 14<- 16
+		 Length: 25
+	node 21 : 21<- 13<- 14<- 16
+		 Length: 32
+	node 22 : 22<- 14<- 16
+		 Length: 19
+	node 23 : 23<- 24<- 17<- 22<- 14<- 16
+		 Length: 36
+	node 24 : 24<- 17<- 22<- 14<- 16
+		 Length: 27
+	node 25 : 25<- 20<- 28<- 5<- 14<- 16
+		 Length: 25
+	node 26 : 26<- 25<- 20<- 28<- 5<- 14<- 16
+		 Length: 27
+	node 27 : 27<- 25<- 20<- 28<- 5<- 14<- 16
+		 Length: 31
+	node 28 : 28<- 5<- 14<- 16
+		 Length: 24
+	node 29 : 29<- 2<- 11<- 26<- 25<- 20<- 28<- 5<- 14<- 16
+		 Length: 96
+	node 30 : 30<- 28<- 5<- 14<- 16
+		 Length: 27
+	node 31 : 31<- 20<- 28<- 5<- 14<- 16
+		 Length: 56
+	node 32 : 32<- 8<- 30<- 28<- 5<- 14<- 16
+		 Length: 54
+Shortest path from node 17
+	node 1 : 1<- 25<- 17
+		 Length: 13
+	node 2 : 2<- 11<- 26<- 17
+		 Length: 43
+	node 3 : 3<- 15<- 8<- 30<- 23<- 24<- 17
+		 Length: 53
+	node 4 : 4<- 11<- 26<- 17
+		 Length: 20
+	node 5 : 5<- 27<- 25<- 17
+		 Length: 36
+	node 6 : 6<- 12<- 22<- 27<- 25<- 17
+		 Length: 23
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 23<- 24<- 17
+		 Length: 37
+	node 9 : 9<- 13<- 25<- 17
+		 Length: 12
+	node 10 : No route to this point!
+	node 11 : 11<- 26<- 17
+		 Length: 14
+	node 12 : 12<- 22<- 27<- 25<- 17
+		 Length: 22
+	node 13 : 13<- 25<- 17
+		 Length: 5
+	node 14 : 14<- 16<- 4<- 11<- 26<- 17
+		 Length: 29
+	node 15 : 15<- 8<- 30<- 23<- 24<- 17
+		 Length: 55
+	node 16 : 16<- 4<- 11<- 26<- 17
+		 Length: 22
+	node 18 : 18<- 24<- 17
+		 Length: 27
+	node 19 : 19<- 27<- 25<- 17
+		 Length: 33
+	node 20 : 20<- 6<- 12<- 22<- 27<- 25<- 17
+		 Length: 31
+	node 21 : 21<- 13<- 25<- 17
+		 Length: 18
+	node 22 : 22<- 27<- 25<- 17
+		 Length: 10
+	node 23 : 23<- 24<- 17
+		 Length: 8
+	node 24 : 24<- 17
+		 Length: -1
+	node 25 : 25<- 17
+		 Length: 4
+	node 26 : 26<- 17
+		 Length: 2
+	node 27 : 27<- 25<- 17
+		 Length: 10
+	node 28 : 28<- 5<- 27<- 25<- 17
+		 Length: 39
+	node 29 : 29<- 2<- 11<- 26<- 17
+		 Length: 71
+	node 30 : 30<- 23<- 24<- 17
+		 Length: 32
+	node 31 : 31<- 2<- 11<- 26<- 17
+		 Length: 53
+	node 32 : 32<- 18<- 24<- 17
+		 Length: 43
+Shortest path from node 18
+	node 1 : 1<- 18
+		 Length: 20
+	node 2 : 2<- 11<- 26<- 17<- 22<- 32<- 18
+		 Length: 93
+	node 3 : 3<- 28<- 5<- 14<- 16<- 18
+		 Length: 70
+	node 4 : 4<- 11<- 26<- 17<- 22<- 32<- 18
+		 Length: 70
+	node 5 : 5<- 14<- 16<- 18
+		 Length: 46
+	node 6 : 6<- 12<- 22<- 32<- 18
+		 Length: 54
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 1<- 18
+		 Length: 56
+	node 9 : 9<- 13<- 14<- 16<- 18
+		 Length: 51
+	node 10 : No route to this point!
+	node 11 : 11<- 26<- 17<- 22<- 32<- 18
+		 Length: 64
+	node 12 : 12<- 22<- 32<- 18
+		 Length: 53
+	node 13 : 13<- 14<- 16<- 18
+		 Length: 44
+	node 14 : 14<- 16<- 18
+		 Length: 32
+	node 15 : 15<- 8<- 30<- 1<- 18
+		 Length: 74
+	node 16 : 16<- 18
+		 Length: 25
+	node 17 : 17<- 22<- 32<- 18
+		 Length: 50
+	node 19 : 19<- 20<- 28<- 5<- 14<- 16<- 18
+		 Length: 52
+	node 20 : 20<- 28<- 5<- 14<- 16<- 18
+		 Length: 50
+	node 21 : 21<- 30<- 1<- 18
+		 Length: 56
+	node 22 : 22<- 32<- 18
+		 Length: 41
+	node 23 : 23<- 24<- 17<- 22<- 32<- 18
+		 Length: 58
+	node 24 : 24<- 17<- 22<- 32<- 18
+		 Length: 49
+	node 25 : 25<- 20<- 28<- 5<- 14<- 16<- 18
+		 Length: 50
+	node 26 : 26<- 17<- 22<- 32<- 18
+		 Length: 52
+	node 27 : 27<- 25<- 20<- 28<- 5<- 14<- 16<- 18
+		 Length: 56
+	node 28 : 28<- 5<- 14<- 16<- 18
+		 Length: 49
+	node 29 : 29<- 2<- 11<- 26<- 17<- 22<- 32<- 18
+		 Length: 121
+	node 30 : 30<- 1<- 18
+		 Length: 51
+	node 31 : 31<- 20<- 28<- 5<- 14<- 16<- 18
+		 Length: 81
+	node 32 : 32<- 18
+		 Length: 16
+Shortest path from node 19
+	node 1 : 1<- 25<- 12<- 30<- 19
+		 Length: 38
+	node 2 : 2<- 15<- 8<- 30<- 19
+		 Length: 42
+	node 3 : 3<- 15<- 8<- 30<- 19
+		 Length: 21
+	node 4 : 4<- 11<- 21<- 30<- 19
+		 Length: 27
+	node 5 : 5<- 14<- 16<- 21<- 30<- 19
+		 Length: 44
+	node 6 : 6<- 12<- 30<- 19
+		 Length: 23
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 19
+		 Length: 5
+	node 9 : 9<- 13<- 25<- 12<- 30<- 19
+		 Length: 37
+	node 10 : No route to this point!
+	node 11 : 11<- 21<- 30<- 19
+		 Length: 21
+	node 12 : 12<- 30<- 19
+		 Length: 22
+	node 13 : 13<- 25<- 12<- 30<- 19
+		 Length: 30
+	node 14 : 14<- 16<- 21<- 30<- 19
+		 Length: 30
+	node 15 : 15<- 8<- 30<- 19
+		 Length: 23
+	node 16 : 16<- 21<- 30<- 19
+		 Length: 23
+	node 17 : 17<- 22<- 27<- 25<- 12<- 30<- 19
+		 Length: 44
+	node 18 : 18<- 11<- 21<- 30<- 19
+		 Length: 42
+	node 20 : 20<- 6<- 12<- 30<- 19
+		 Length: 31
+	node 21 : 21<- 30<- 19
+		 Length: 5
+	node 22 : 22<- 27<- 25<- 12<- 30<- 19
+		 Length: 35
+	node 23 : 23<- 8<- 30<- 19
+		 Length: 27
+	node 24 : 24<- 17<- 22<- 27<- 25<- 12<- 30<- 19
+		 Length: 43
+	node 25 : 25<- 12<- 30<- 19
+		 Length: 29
+	node 26 : 26<- 15<- 8<- 30<- 19
+		 Length: 21
+	node 27 : 27<- 25<- 12<- 30<- 19
+		 Length: 35
+	node 28 : 28<- 6<- 12<- 30<- 19
+		 Length: 41
+	node 29 : 29<- 2<- 15<- 8<- 30<- 19
+		 Length: 70
+	node 30 : 30<- 19
+		 Length: 0
+	node 31 : 31<- 2<- 15<- 8<- 30<- 19
+		 Length: 52
+	node 32 : 32<- 8<- 30<- 19
+		 Length: 27
+Shortest path from node 20
+	node 1 : 1<- 25<- 20
+		 Length: 9
+	node 2 : 2<- 11<- 26<- 25<- 20
+		 Length: 43
+	node 3 : 3<- 15<- 8<- 30<- 19<- 20
+		 Length: 23
+	node 4 : 4<- 11<- 26<- 25<- 20
+		 Length: 20
+	node 5 : 5<- 20
+		 Length: 30
+	node 6 : 6<- 12<- 22<- 27<- 25<- 20
+		 Length: 19
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 19<- 20
+		 Length: 7
+	node 9 : 9<- 13<- 25<- 20
+		 Length: 8
+	node 10 : No route to this point!
+	node 11 : 11<- 26<- 25<- 20
+		 Length: 14
+	node 12 : 12<- 22<- 27<- 25<- 20
+		 Length: 18
+	node 13 : 13<- 25<- 20
+		 Length: 1
+	node 14 : 14<- 16<- 4<- 11<- 26<- 25<- 20
+		 Length: 29
+	node 15 : 15<- 8<- 30<- 19<- 20
+		 Length: 25
+	node 16 : 16<- 4<- 11<- 26<- 25<- 20
+		 Length: 22
+	node 17 : 17<- 22<- 27<- 25<- 20
+		 Length: 15
+	node 18 : 18<- 11<- 26<- 25<- 20
+		 Length: 35
+	node 19 : 19<- 20
+		 Length: 2
+	node 21 : 21<- 30<- 19<- 20
+		 Length: 7
+	node 22 : 22<- 27<- 25<- 20
+		 Length: 6
+	node 23 : 23<- 24<- 17<- 22<- 27<- 25<- 20
+		 Length: 23
+	node 24 : 24<- 17<- 22<- 27<- 25<- 20
+		 Length: 14
+	node 25 : 25<- 20
+		 Length: 0
+	node 26 : 26<- 25<- 20
+		 Length: 2
+	node 27 : 27<- 25<- 20
+		 Length: 6
+	node 28 : 28<- 5<- 20
+		 Length: 33
+	node 29 : 29<- 2<- 11<- 26<- 25<- 20
+		 Length: 71
+	node 30 : 30<- 19<- 20
+		 Length: 2
+	node 31 : 31<- 20
+		 Length: 31
+	node 32 : 32<- 8<- 30<- 19<- 20
+		 Length: 29
+Shortest path from node 21
+	node 1 : 1<- 14<- 16<- 21
+		 Length: 52
+	node 2 : 2<- 11<- 21
+		 Length: 45
+	node 3 : 3<- 15<- 8<- 30<- 21
+		 Length: 52
+	node 4 : 4<- 11<- 21
+		 Length: 22
+	node 5 : 5<- 14<- 16<- 21
+		 Length: 39
+	node 6 : 6<- 4<- 11<- 21
+		 Length: 40
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 21
+		 Length: 36
+	node 9 : 9<- 13<- 4<- 11<- 21
+		 Length: 39
+	node 10 : No route to this point!
+	node 11 : 11<- 21
+		 Length: 16
+	node 12 : 12<- 22<- 14<- 16<- 21
+		 Length: 49
+	node 13 : 13<- 4<- 11<- 21
+		 Length: 32
+	node 14 : 14<- 16<- 21
+		 Length: 25
+	node 15 : 15<- 8<- 30<- 21
+		 Length: 54
+	node 16 : 16<- 21
+		 Length: 18
+	node 17 : 17<- 22<- 14<- 16<- 21
+		 Length: 46
+	node 18 : 18<- 11<- 21
+		 Length: 37
+	node 19 : 19<- 20<- 28<- 5<- 14<- 16<- 21
+		 Length: 45
+	node 20 : 20<- 28<- 5<- 14<- 16<- 21
+		 Length: 43
+	node 22 : 22<- 14<- 16<- 21
+		 Length: 37
+	node 23 : 23<- 4<- 11<- 21
+		 Length: 48
+	node 24 : 24<- 17<- 22<- 14<- 16<- 21
+		 Length: 45
+	node 25 : 25<- 20<- 28<- 5<- 14<- 16<- 21
+		 Length: 43
+	node 26 : 26<- 25<- 20<- 28<- 5<- 14<- 16<- 21
+		 Length: 45
+	node 27 : 27<- 25<- 20<- 28<- 5<- 14<- 16<- 21
+		 Length: 49
+	node 28 : 28<- 5<- 14<- 16<- 21
+		 Length: 42
+	node 29 : 29<- 2<- 11<- 21
+		 Length: 73
+	node 30 : 30<- 21
+		 Length: 31
+	node 31 : 31<- 2<- 11<- 21
+		 Length: 55
+	node 32 : 32<- 18<- 11<- 21
+		 Length: 53
+Shortest path from node 22
+	node 1 : 1<- 25<- 17<- 22
+		 Length: 22
+	node 2 : 2<- 11<- 26<- 17<- 22
+		 Length: 52
+	node 3 : 3<- 15<- 8<- 30<- 19<- 20<- 6<- 12<- 22
+		 Length: 44
+	node 4 : 4<- 11<- 26<- 17<- 22
+		 Length: 29
+	node 5 : 5<- 27<- 25<- 17<- 22
+		 Length: 45
+	node 6 : 6<- 12<- 22
+		 Length: 13
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 19<- 20<- 6<- 12<- 22
+		 Length: 28
+	node 9 : 9<- 13<- 25<- 17<- 22
+		 Length: 21
+	node 10 : No route to this point!
+	node 11 : 11<- 26<- 17<- 22
+		 Length: 23
+	node 12 : 12<- 22
+		 Length: 12
+	node 13 : 13<- 25<- 17<- 22
+		 Length: 14
+	node 14 : 14<- 12<- 22
+		 Length: 38
+	node 15 : 15<- 8<- 30<- 19<- 20<- 6<- 12<- 22
+		 Length: 46
+	node 16 : 16<- 4<- 11<- 26<- 17<- 22
+		 Length: 31
+	node 17 : 17<- 22
+		 Length: 9
+	node 18 : 18<- 24<- 17<- 22
+		 Length: 36
+	node 19 : 19<- 20<- 6<- 12<- 22
+		 Length: 23
+	node 20 : 20<- 6<- 12<- 22
+		 Length: 21
+	node 21 : 21<- 13<- 25<- 17<- 22
+		 Length: 27
+	node 23 : 23<- 24<- 17<- 22
+		 Length: 17
+	node 24 : 24<- 17<- 22
+		 Length: 8
+	node 25 : 25<- 17<- 22
+		 Length: 13
+	node 26 : 26<- 17<- 22
+		 Length: 11
+	node 27 : 27<- 25<- 17<- 22
+		 Length: 19
+	node 28 : 28<- 6<- 12<- 22
+		 Length: 31
+	node 29 : 29<- 2<- 11<- 26<- 17<- 22
+		 Length: 80
+	node 30 : 30<- 19<- 20<- 6<- 12<- 22
+		 Length: 23
+	node 31 : 31<- 20<- 6<- 12<- 22
+		 Length: 52
+	node 32 : 32<- 8<- 30<- 19<- 20<- 6<- 12<- 22
+		 Length: 50
+Shortest path from node 23
+	node 1 : 1<- 25<- 12<- 30<- 23
+		 Length: 62
+	node 2 : 2<- 15<- 8<- 30<- 23
+		 Length: 66
+	node 3 : 3<- 15<- 8<- 30<- 23
+		 Length: 45
+	node 4 : 4<- 11<- 21<- 30<- 23
+		 Length: 51
+	node 5 : 5<- 14<- 16<- 21<- 30<- 23
+		 Length: 68
+	node 6 : 6<- 12<- 30<- 23
+		 Length: 47
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 23
+		 Length: 29
+	node 9 : 9<- 13<- 25<- 12<- 30<- 23
+		 Length: 61
+	node 10 : No route to this point!
+	node 11 : 11<- 21<- 30<- 23
+		 Length: 45
+	node 12 : 12<- 30<- 23
+		 Length: 46
+	node 13 : 13<- 25<- 12<- 30<- 23
+		 Length: 54
+	node 14 : 14<- 16<- 21<- 30<- 23
+		 Length: 54
+	node 15 : 15<- 8<- 30<- 23
+		 Length: 47
+	node 16 : 16<- 21<- 30<- 23
+		 Length: 47
+	node 17 : 17<- 22<- 27<- 25<- 12<- 30<- 23
+		 Length: 68
+	node 18 : 18<- 11<- 21<- 30<- 23
+		 Length: 66
+	node 19 : 19<- 20<- 6<- 12<- 30<- 23
+		 Length: 57
+	node 20 : 20<- 6<- 12<- 30<- 23
+		 Length: 55
+	node 21 : 21<- 30<- 23
+		 Length: 29
+	node 22 : 22<- 27<- 25<- 12<- 30<- 23
+		 Length: 59
+	node 24 : 24<- 17<- 22<- 27<- 25<- 12<- 30<- 23
+		 Length: 67
+	node 25 : 25<- 12<- 30<- 23
+		 Length: 53
+	node 26 : 26<- 15<- 8<- 30<- 23
+		 Length: 45
+	node 27 : 27<- 25<- 12<- 30<- 23
+		 Length: 59
+	node 28 : 28<- 6<- 12<- 30<- 23
+		 Length: 65
+	node 29 : 29<- 2<- 15<- 8<- 30<- 23
+		 Length: 94
+	node 30 : 30<- 23
+		 Length: 24
+	node 31 : 31<- 2<- 15<- 8<- 30<- 23
+		 Length: 76
+	node 32 : 32<- 8<- 30<- 23
+		 Length: 51
+Shortest path from node 24
+	node 1 : 1<- 25<- 17<- 24
+		 Length: 32
+	node 2 : 2<- 11<- 26<- 17<- 24
+		 Length: 62
+	node 3 : 3<- 15<- 8<- 30<- 23<- 24
+		 Length: 54
+	node 4 : 4<- 11<- 26<- 17<- 24
+		 Length: 39
+	node 5 : 5<- 27<- 25<- 17<- 24
+		 Length: 55
+	node 6 : 6<- 12<- 22<- 27<- 25<- 17<- 24
+		 Length: 42
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 23<- 24
+		 Length: 38
+	node 9 : 9<- 13<- 25<- 17<- 24
+		 Length: 31
+	node 10 : No route to this point!
+	node 11 : 11<- 26<- 17<- 24
+		 Length: 33
+	node 12 : 12<- 22<- 27<- 25<- 17<- 24
+		 Length: 41
+	node 13 : 13<- 25<- 17<- 24
+		 Length: 24
+	node 14 : 14<- 16<- 4<- 11<- 26<- 17<- 24
+		 Length: 48
+	node 15 : 15<- 8<- 30<- 23<- 24
+		 Length: 56
+	node 16 : 16<- 4<- 11<- 26<- 17<- 24
+		 Length: 41
+	node 17 : 17<- 24
+		 Length: 19
+	node 18 : 18<- 24
+		 Length: 28
+	node 19 : 19<- 27<- 25<- 17<- 24
+		 Length: 52
+	node 20 : 20<- 6<- 12<- 22<- 27<- 25<- 17<- 24
+		 Length: 50
+	node 21 : 21<- 24
+		 Length: 26
+	node 22 : 22<- 27<- 25<- 17<- 24
+		 Length: 29
+	node 23 : 23<- 24
+		 Length: 9
+	node 25 : 25<- 17<- 24
+		 Length: 23
+	node 26 : 26<- 17<- 24
+		 Length: 21
+	node 27 : 27<- 25<- 17<- 24
+		 Length: 29
+	node 28 : 28<- 5<- 27<- 25<- 17<- 24
+		 Length: 58
+	node 29 : 29<- 2<- 11<- 26<- 17<- 24
+		 Length: 90
+	node 30 : 30<- 23<- 24
+		 Length: 33
+	node 31 : 31<- 2<- 11<- 26<- 17<- 24
+		 Length: 72
+	node 32 : 32<- 18<- 24
+		 Length: 44
+Shortest path from node 25
+	node 1 : 1<- 25
+		 Length: 9
+	node 2 : 2<- 11<- 26<- 25
+		 Length: 43
+	node 3 : 3<- 15<- 8<- 30<- 19<- 27<- 25
+		 Length: 50
+	node 4 : 4<- 11<- 26<- 25
+		 Length: 20
+	node 5 : 5<- 27<- 25
+		 Length: 32
+	node 6 : 6<- 12<- 22<- 27<- 25
+		 Length: 19
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 19<- 27<- 25
+		 Length: 34
+	node 9 : 9<- 13<- 25
+		 Length: 8
+	node 10 : No route to this point!
+	node 11 : 11<- 26<- 25
+		 Length: 14
+	node 12 : 12<- 22<- 27<- 25
+		 Length: 18
+	node 13 : 13<- 25
+		 Length: 1
+	node 14 : 14<- 16<- 4<- 11<- 26<- 25
+		 Length: 29
+	node 15 : 15<- 8<- 30<- 19<- 27<- 25
+		 Length: 52
+	node 16 : 16<- 4<- 11<- 26<- 25
+		 Length: 22
+	node 17 : 17<- 22<- 27<- 25
+		 Length: 15
+	node 18 : 18<- 11<- 26<- 25
+		 Length: 35
+	node 19 : 19<- 27<- 25
+		 Length: 29
+	node 20 : 20<- 6<- 12<- 22<- 27<- 25
+		 Length: 27
+	node 21 : 21<- 13<- 25
+		 Length: 14
+	node 22 : 22<- 27<- 25
+		 Length: 6
+	node 23 : 23<- 24<- 17<- 22<- 27<- 25
+		 Length: 23
+	node 24 : 24<- 17<- 22<- 27<- 25
+		 Length: 14
+	node 26 : 26<- 25
+		 Length: 2
+	node 27 : 27<- 25
+		 Length: 6
+	node 28 : 28<- 5<- 27<- 25
+		 Length: 35
+	node 29 : 29<- 2<- 11<- 26<- 25
+		 Length: 71
+	node 30 : 30<- 19<- 27<- 25
+		 Length: 29
+	node 31 : 31<- 2<- 11<- 26<- 25
+		 Length: 53
+	node 32 : 32<- 18<- 11<- 26<- 25
+		 Length: 51
+Shortest path from node 26
+	node 1 : 1<- 9<- 13<- 26
+		 Length: 50
+	node 2 : 2<- 11<- 26
+		 Length: 41
+	node 3 : 3<- 28<- 5<- 14<- 16<- 4<- 11<- 26
+		 Length: 65
+	node 4 : 4<- 11<- 26
+		 Length: 18
+	node 5 : 5<- 14<- 16<- 4<- 11<- 26
+		 Length: 41
+	node 6 : 6<- 4<- 11<- 26
+		 Length: 36
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 19<- 20<- 6<- 4<- 11<- 26
+		 Length: 51
+	node 9 : 9<- 13<- 26
+		 Length: 29
+	node 10 : No route to this point!
+	node 11 : 11<- 26
+		 Length: 12
+	node 12 : 12<- 22<- 14<- 16<- 4<- 11<- 26
+		 Length: 51
+	node 13 : 13<- 26
+		 Length: 22
+	node 14 : 14<- 16<- 4<- 11<- 26
+		 Length: 27
+	node 15 : 15<- 8<- 30<- 19<- 20<- 6<- 4<- 11<- 26
+		 Length: 69
+	node 16 : 16<- 4<- 11<- 26
+		 Length: 20
+	node 17 : 17<- 22<- 14<- 16<- 4<- 11<- 26
+		 Length: 48
+	node 18 : 18<- 11<- 26
+		 Length: 33
+	node 19 : 19<- 20<- 6<- 4<- 11<- 26
+		 Length: 46
+	node 20 : 20<- 6<- 4<- 11<- 26
+		 Length: 44
+	node 21 : 21<- 26
+		 Length: 24
+	node 22 : 22<- 14<- 16<- 4<- 11<- 26
+		 Length: 39
+	node 23 : 23<- 4<- 11<- 26
+		 Length: 44
+	node 24 : 24<- 17<- 22<- 14<- 16<- 4<- 11<- 26
+		 Length: 47
+	node 25 : 25<- 20<- 6<- 4<- 11<- 26
+		 Length: 44
+	node 27 : 27<- 25<- 20<- 6<- 4<- 11<- 26
+		 Length: 50
+	node 28 : 28<- 5<- 14<- 16<- 4<- 11<- 26
+		 Length: 44
+	node 29 : 29<- 2<- 11<- 26
+		 Length: 69
+	node 30 : 30<- 19<- 20<- 6<- 4<- 11<- 26
+		 Length: 46
+	node 31 : 31<- 2<- 11<- 26
+		 Length: 51
+	node 32 : 32<- 18<- 11<- 26
+		 Length: 49
+Shortest path from node 27
+	node 1 : 1<- 25<- 17<- 22<- 27
+		 Length: 22
+	node 2 : 2<- 11<- 26<- 17<- 22<- 27
+		 Length: 52
+	node 3 : 3<- 15<- 8<- 30<- 19<- 27
+		 Length: 44
+	node 4 : 4<- 11<- 26<- 17<- 22<- 27
+		 Length: 29
+	node 5 : 5<- 27
+		 Length: 26
+	node 6 : 6<- 12<- 22<- 27
+		 Length: 13
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 19<- 27
+		 Length: 28
+	node 9 : 9<- 13<- 25<- 17<- 22<- 27
+		 Length: 21
+	node 10 : No route to this point!
+	node 11 : 11<- 26<- 17<- 22<- 27
+		 Length: 23
+	node 12 : 12<- 22<- 27
+		 Length: 12
+	node 13 : 13<- 25<- 17<- 22<- 27
+		 Length: 14
+	node 14 : 14<- 12<- 22<- 27
+		 Length: 38
+	node 15 : 15<- 8<- 30<- 19<- 27
+		 Length: 46
+	node 16 : 16<- 4<- 11<- 26<- 17<- 22<- 27
+		 Length: 31
+	node 17 : 17<- 22<- 27
+		 Length: 9
+	node 18 : 18<- 24<- 17<- 22<- 27
+		 Length: 36
+	node 19 : 19<- 27
+		 Length: 23
+	node 20 : 20<- 6<- 12<- 22<- 27
+		 Length: 21
+	node 21 : 21<- 13<- 25<- 17<- 22<- 27
+		 Length: 27
+	node 22 : 22<- 27
+		 Length: 0
+	node 23 : 23<- 24<- 17<- 22<- 27
+		 Length: 17
+	node 24 : 24<- 17<- 22<- 27
+		 Length: 8
+	node 25 : 25<- 17<- 22<- 27
+		 Length: 13
+	node 26 : 26<- 17<- 22<- 27
+		 Length: 11
+	node 28 : 28<- 5<- 27
+		 Length: 29
+	node 29 : 29<- 2<- 11<- 26<- 17<- 22<- 27
+		 Length: 80
+	node 30 : 30<- 19<- 27
+		 Length: 23
+	node 31 : 31<- 20<- 6<- 12<- 22<- 27
+		 Length: 52
+	node 32 : 32<- 8<- 30<- 19<- 27
+		 Length: 50
+Shortest path from node 28
+	node 1 : 1<- 25<- 20<- 28
+		 Length: 10
+	node 2 : 2<- 11<- 26<- 25<- 20<- 28
+		 Length: 44
+	node 3 : 3<- 28
+		 Length: 21
+	node 4 : 4<- 11<- 26<- 25<- 20<- 28
+		 Length: 21
+	node 5 : 5<- 20<- 28
+		 Length: 31
+	node 6 : 6<- 12<- 22<- 27<- 25<- 20<- 28
+		 Length: 20
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 28
+		 Length: 8
+	node 9 : 9<- 13<- 25<- 20<- 28
+		 Length: 9
+	node 10 : No route to this point!
+	node 11 : 11<- 26<- 25<- 20<- 28
+		 Length: 15
+	node 12 : 12<- 22<- 27<- 25<- 20<- 28
+		 Length: 19
+	node 13 : 13<- 25<- 20<- 28
+		 Length: 2
+	node 14 : 14<- 16<- 4<- 11<- 26<- 25<- 20<- 28
+		 Length: 30
+	node 15 : 15<- 8<- 30<- 28
+		 Length: 26
+	node 16 : 16<- 4<- 11<- 26<- 25<- 20<- 28
+		 Length: 23
+	node 17 : 17<- 22<- 27<- 25<- 20<- 28
+		 Length: 16
+	node 18 : 18<- 11<- 26<- 25<- 20<- 28
+		 Length: 36
+	node 19 : 19<- 20<- 28
+		 Length: 3
+	node 20 : 20<- 28
+		 Length: 1
+	node 21 : 21<- 30<- 28
+		 Length: 8
+	node 22 : 22<- 27<- 25<- 20<- 28
+		 Length: 7
+	node 23 : 23<- 24<- 17<- 22<- 27<- 25<- 20<- 28
+		 Length: 24
+	node 24 : 24<- 17<- 22<- 27<- 25<- 20<- 28
+		 Length: 15
+	node 25 : 25<- 20<- 28
+		 Length: 1
+	node 26 : 26<- 25<- 20<- 28
+		 Length: 3
+	node 27 : 27<- 25<- 20<- 28
+		 Length: 7
+	node 29 : 29<- 2<- 11<- 26<- 25<- 20<- 28
+		 Length: 72
+	node 30 : 30<- 28
+		 Length: 3
+	node 31 : 31<- 20<- 28
+		 Length: 32
+	node 32 : 32<- 8<- 30<- 28
+		 Length: 30
+Shortest path from node 29
+	node 1 : 1<- 9<- 29
+		 Length: 31
+	node 2 : 2<- 11<- 9<- 29
+		 Length: 70
+	node 3 : 3<- 15<- 8<- 30<- 19<- 20<- 29
+		 Length: 51
+	node 4 : 4<- 11<- 9<- 29
+		 Length: 47
+	node 5 : 5<- 20<- 29
+		 Length: 58
+	node 6 : 6<- 12<- 22<- 29
+		 Length: 42
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 19<- 20<- 29
+		 Length: 35
+	node 9 : 9<- 29
+		 Length: 10
+	node 10 : No route to this point!
+	node 11 : 11<- 9<- 29
+		 Length: 41
+	node 12 : 12<- 22<- 29
+		 Length: 41
+	node 13 : 13<- 25<- 20<- 29
+		 Length: 29
+	node 14 : 14<- 16<- 4<- 11<- 9<- 29
+		 Length: 56
+	node 15 : 15<- 8<- 30<- 19<- 20<- 29
+		 Length: 53
+	node 16 : 16<- 4<- 11<- 9<- 29
+		 Length: 49
+	node 17 : 17<- 24<- 29
+		 Length: 31
+	node 18 : 18<- 24<- 29
+		 Length: 40
+	node 19 : 19<- 20<- 29
+		 Length: 30
+	node 20 : 20<- 29
+		 Length: 28
+	node 21 : 21<- 30<- 19<- 20<- 29
+		 Length: 35
+	node 22 : 22<- 29
+		 Length: 29
+	node 23 : 23<- 24<- 29
+		 Length: 21
+	node 24 : 24<- 29
+		 Length: 12
+	node 25 : 25<- 20<- 29
+		 Length: 28
+	node 26 : 26<- 25<- 20<- 29
+		 Length: 30
+	node 27 : 27<- 25<- 20<- 29
+		 Length: 34
+	node 28 : 28<- 6<- 12<- 22<- 29
+		 Length: 60
+	node 30 : 30<- 19<- 20<- 29
+		 Length: 30
+	node 31 : 31<- 29
+		 Length: 22
+	node 32 : 32<- 18<- 24<- 29
+		 Length: 56
+Shortest path from node 30
+	node 1 : 1<- 25<- 12<- 30
+		 Length: 38
+	node 2 : 2<- 15<- 8<- 30
+		 Length: 42
+	node 3 : 3<- 15<- 8<- 30
+		 Length: 21
+	node 4 : 4<- 11<- 21<- 30
+		 Length: 27
+	node 5 : 5<- 14<- 16<- 21<- 30
+		 Length: 44
+	node 6 : 6<- 12<- 30
+		 Length: 23
+	node 7 : No route to this point!
+	node 8 : 8<- 30
+		 Length: 5
+	node 9 : 9<- 13<- 25<- 12<- 30
+		 Length: 37
+	node 10 : No route to this point!
+	node 11 : 11<- 21<- 30
+		 Length: 21
+	node 12 : 12<- 30
+		 Length: 22
+	node 13 : 13<- 25<- 12<- 30
+		 Length: 30
+	node 14 : 14<- 16<- 21<- 30
+		 Length: 30
+	node 15 : 15<- 8<- 30
+		 Length: 23
+	node 16 : 16<- 21<- 30
+		 Length: 23
+	node 17 : 17<- 22<- 27<- 25<- 12<- 30
+		 Length: 44
+	node 18 : 18<- 11<- 21<- 30
+		 Length: 42
+	node 19 : 19<- 20<- 6<- 12<- 30
+		 Length: 33
+	node 20 : 20<- 6<- 12<- 30
+		 Length: 31
+	node 21 : 21<- 30
+		 Length: 5
+	node 22 : 22<- 27<- 25<- 12<- 30
+		 Length: 35
+	node 23 : 23<- 8<- 30
+		 Length: 27
+	node 24 : 24<- 17<- 22<- 27<- 25<- 12<- 30
+		 Length: 43
+	node 25 : 25<- 12<- 30
+		 Length: 29
+	node 26 : 26<- 15<- 8<- 30
+		 Length: 21
+	node 27 : 27<- 25<- 12<- 30
+		 Length: 35
+	node 28 : 28<- 6<- 12<- 30
+		 Length: 41
+	node 29 : 29<- 2<- 15<- 8<- 30
+		 Length: 70
+	node 31 : 31<- 2<- 15<- 8<- 30
+		 Length: 52
+	node 32 : 32<- 8<- 30
+		 Length: 27
+Shortest path from node 31
+	node 1 : 1<- 9<- 31
+		 Length: 38
+	node 2 : 2<- 11<- 9<- 31
+		 Length: 77
+	node 3 : 3<- 15<- 8<- 30<- 19<- 20<- 9<- 31
+		 Length: 69
+	node 4 : 4<- 11<- 9<- 31
+		 Length: 54
+	node 5 : 5<- 20<- 9<- 31
+		 Length: 76
+	node 6 : 6<- 12<- 22<- 27<- 25<- 20<- 9<- 31
+		 Length: 65
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 19<- 20<- 9<- 31
+		 Length: 53
+	node 9 : 9<- 31
+		 Length: 17
+	node 10 : No route to this point!
+	node 11 : 11<- 9<- 31
+		 Length: 48
+	node 12 : 12<- 22<- 27<- 25<- 20<- 9<- 31
+		 Length: 64
+	node 13 : 13<- 25<- 20<- 9<- 31
+		 Length: 47
+	node 14 : 14<- 16<- 4<- 11<- 9<- 31
+		 Length: 63
+	node 15 : 15<- 8<- 30<- 19<- 20<- 9<- 31
+		 Length: 71
+	node 16 : 16<- 4<- 11<- 9<- 31
+		 Length: 56
+	node 17 : 17<- 22<- 27<- 25<- 20<- 9<- 31
+		 Length: 61
+	node 18 : 18<- 11<- 9<- 31
+		 Length: 69
+	node 19 : 19<- 20<- 9<- 31
+		 Length: 48
+	node 20 : 20<- 9<- 31
+		 Length: 46
+	node 21 : 21<- 30<- 19<- 20<- 9<- 31
+		 Length: 53
+	node 22 : 22<- 27<- 25<- 20<- 9<- 31
+		 Length: 52
+	node 23 : 23<- 24<- 17<- 22<- 27<- 25<- 20<- 9<- 31
+		 Length: 69
+	node 24 : 24<- 17<- 22<- 27<- 25<- 20<- 9<- 31
+		 Length: 60
+	node 25 : 25<- 20<- 9<- 31
+		 Length: 46
+	node 26 : 26<- 25<- 20<- 9<- 31
+		 Length: 48
+	node 27 : 27<- 25<- 20<- 9<- 31
+		 Length: 52
+	node 28 : 28<- 5<- 20<- 9<- 31
+		 Length: 79
+	node 29 : 29<- 2<- 11<- 9<- 31
+		 Length: 105
+	node 30 : 30<- 19<- 20<- 9<- 31
+		 Length: 48
+	node 32 : 32<- 8<- 30<- 19<- 20<- 9<- 31
+		 Length: 75
+Shortest path from node 32
+	node 1 : 1<- 25<- 17<- 22<- 32
+		 Length: 47
+	node 2 : 2<- 11<- 26<- 17<- 22<- 32
+		 Length: 77
+	node 3 : 3<- 15<- 8<- 30<- 19<- 20<- 6<- 12<- 22<- 32
+		 Length: 69
+	node 4 : 4<- 11<- 26<- 17<- 22<- 32
+		 Length: 54
+	node 5 : 5<- 27<- 25<- 17<- 22<- 32
+		 Length: 70
+	node 6 : 6<- 12<- 22<- 32
+		 Length: 38
+	node 7 : No route to this point!
+	node 8 : 8<- 30<- 19<- 20<- 6<- 12<- 22<- 32
+		 Length: 53
+	node 9 : 9<- 13<- 25<- 17<- 22<- 32
+		 Length: 46
+	node 10 : No route to this point!
+	node 11 : 11<- 26<- 17<- 22<- 32
+		 Length: 48
+	node 12 : 12<- 22<- 32
+		 Length: 37
+	node 13 : 13<- 25<- 17<- 22<- 32
+		 Length: 39
+	node 14 : 14<- 12<- 22<- 32
+		 Length: 63
+	node 15 : 15<- 8<- 30<- 19<- 20<- 6<- 12<- 22<- 32
+		 Length: 71
+	node 16 : 16<- 4<- 11<- 26<- 17<- 22<- 32
+		 Length: 56
+	node 17 : 17<- 22<- 32
+		 Length: 34
+	node 18 : 18<- 24<- 17<- 22<- 32
+		 Length: 61
+	node 19 : 19<- 20<- 6<- 12<- 22<- 32
+		 Length: 48
+	node 20 : 20<- 6<- 12<- 22<- 32
+		 Length: 46
+	node 21 : 21<- 13<- 25<- 17<- 22<- 32
+		 Length: 52
+	node 22 : 22<- 32
+		 Length: 25
+	node 23 : 23<- 24<- 17<- 22<- 32
+		 Length: 42
+	node 24 : 24<- 17<- 22<- 32
+		 Length: 33
+	node 25 : 25<- 17<- 22<- 32
+		 Length: 38
+	node 26 : 26<- 17<- 22<- 32
+		 Length: 36
+	node 27 : 27<- 25<- 17<- 22<- 32
+		 Length: 44
+	node 28 : 28<- 6<- 12<- 22<- 32
+		 Length: 56
+	node 29 : 29<- 2<- 11<- 26<- 17<- 22<- 32
+		 Length: 105
+	node 30 : 30<- 19<- 20<- 6<- 12<- 22<- 32
+		 Length: 48
+	node 31 : 31<- 20<- 6<- 12<- 22<- 32
+		 Length: 77

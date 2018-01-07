@@ -1,0 +1,5 @@
+Time of component 1 : 1047520
+Time of component 113 : 3783
+Time of component 79 : 3521
+Time of component 236 : 4360
+Time of component 95 : 4500

@@ -1,0 +1,4 @@
+Time of component 4 : 1455
+Time of component 7 : 1325
+Time of component 1 : 7160
+Time of component 8 : 1563

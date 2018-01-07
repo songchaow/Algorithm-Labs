@@ -1,0 +1,3 @@
+Time of component 14 : 1202
+Time of component 10 : 1407
+Time of component 1 : 35718
