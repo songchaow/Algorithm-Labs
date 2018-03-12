@@ -76,7 +76,7 @@ void add_random_edge(WeightedDirectedGraph &g, int scale, int nodescale)
         int weight = rand()%nodenum;
         if(neg_edge_num>0) 
         {
-            weight = -(rand()%neg_edge_num0);
+            weight = -(rand()%neg_edge_num0)-1;
             neg_edge_num--;
         }
         g.addEdge(&*pointer,&*pointee,weight);
