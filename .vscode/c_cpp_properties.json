@@ -28,7 +28,10 @@
             "includePath": [
                 "/usr/include",
                 "/usr/local/include",
-                "${workspaceRoot}"
+                "${workspaceRoot}",
+                "/usr/include/c++/6",
+                "/usr/include/x86_64-linux-gnu/c++/6",
+                "${workspaceRoot}/Lab3/source"
             ],
             "defines": [],
             "intelliSenseMode": "clang-x64",
@@ -60,7 +63,7 @@
                 "path": [
                     "${workspaceRoot}",
                     "D:\\Green App\\codeblocks-16.01mingw-nosetup\\MinGW\\include",
-                    "D:\\Green App\\codeblocks-16.01mingw-nosetup\\MinGW\\lib\\gcc\\mingw32\\4.9.2\\include\\c++",                
+                    "D:\\Green App\\codeblocks-16.01mingw-nosetup\\MinGW\\lib\\gcc\\mingw32\\4.9.2\\include\\c++",
                     "D:\\Green App\\codeblocks-16.01mingw-nosetup\\MinGW\\lib\\gcc\\mingw32\\4.9.2\\include\\c++\\mingw32",
                     "D:\\Green App\\codeblocks-16.01mingw-nosetup\\MinGW\\lib\\gcc\\mingw32\\4.9.2\\include"
                 ],

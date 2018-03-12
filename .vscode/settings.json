@@ -28,6 +28,12 @@
         "utility": "cpp",
         "chrono": "cpp",
         "fstream": "cpp",
-        "ratio": "cpp"
-    }
+        "ratio": "cpp",
+        "sstream": "cpp",
+        "cmath": "cpp",
+        "complex": "cpp",
+        "string_view": "cpp",
+        "iterator": "cpp"
+    },
+    "python.pythonPath": "/home/songchaow/.virtualenvs/env1/bin/python"
 }

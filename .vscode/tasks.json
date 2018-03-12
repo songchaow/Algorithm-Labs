@@ -44,9 +44,49 @@
             }
         },
         {
+            "taskName": "Lab2 linux build(release) ex1",
+            "type": "shell",
+            "command": "g++ ${file} -std=c++11 -O3 -o Lab2/ex1/source/a.out",
+            "problemMatcher": "$gcc",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
             "taskName": "Lab2 linux build(release) ex2",
             "type": "shell",
-            "command": "g++ ${file} -std=c++11 -ggdb -o Lab2/ex2/source/a.out",
+            "command": "g++ ${file} -std=c++11 -O3 -o Lab2/ex2/source/a.out",
+            "problemMatcher": "$gcc",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "taskName": "Lab3 linux test build ex1",
+            "type": "shell",
+            "command": "g++ Lab3/source/test.cpp -std=c++11 -ggdb -o Lab3/source/a.out",
+            "problemMatcher": "$gcc",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "taskName": "Lab4 linux build ex1",
+            "type": "shell",
+            "command": "make -C Lab4 project1",
+            "problemMatcher": "$gcc",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "taskName": "Lab4 linux build ex2",
+            "type": "shell",
+            "command": "make -C Lab4 project2",
             "problemMatcher": "$gcc",
             "group": {
                 "kind": "build",
